@@ -1,7 +1,7 @@
 <div class="header--wrapper">
-    <h2>M E M E G.</h2>
+    <h2>E E G.</h2>
     <div class="header--title">
-        <h2>Dashboard</h2>
+        <h2><?php echo"$title"; ?></h2>
     </div>
     <div class="user--info">
         <div class="logout--box">

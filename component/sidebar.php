@@ -1,22 +1,22 @@
 <div class="sidebar">
         <div class="logo">
             <ul class="menu">
-                <li class="active" id="li_dashboard">
+                <li  id="li_dashboard">
                     <a href="index.php">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li id="li_karyawan" onclick="karyawan()">
+                <li id="li_karyawan"">
                     <a href="karyawan.php" >
                         <i class="fas fa-user"></i>
                         <span>Karyawan</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li id="li_supplier" onclick="test()">
+                    <a href="supplier.php">
                         <i class="fas fa-chart-bar"></i>
-                        <span>Statistik</span>
+                        <span>Supplier</span>
                     </a>
                 </li>
                 <li>
@@ -35,4 +35,4 @@
     </div>
 </div>
 
-<script src="src.js"></script>
+<script defer src="script.js"></script>

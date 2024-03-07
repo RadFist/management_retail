@@ -1,6 +1,17 @@
 <?php
 include 'component/connection.php';
-include 'function_index.php';
+include 'function.php';
+$title = "Dashboard";
+
+
+//product total count database
+$produk_total = getTotalCount($connect, 'tb_produk', 'id_produk');
+//supplier total count database
+$supplier_total = getTotalCount($connect, 'tb_supplier', 'id_supplier');
+//karyawan total count database
+$karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
+
+
 ?> 
 
 <!DOCTYPE html>
@@ -71,7 +82,7 @@ include 'function_index.php';
                         </div>
                         <i class="fas fa-book"></i>
                     </div>
-                    <span class="card-detail"><?php echo"$stock_total";?></span>
+                    <span class="card-detail">0</span>
                 </div>
 
             </div>
