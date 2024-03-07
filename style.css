@@ -108,6 +108,13 @@ body{
     gap: 1rem;
 }
 
+.user--info a {
+    color:rgba(113, 99, 186, 225);    ;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
 .search--box{
     background: rgb(237, 237, 237);
     border-radius: 15px;
@@ -207,10 +214,12 @@ body{
 }
 
 .card-detail{
-    font-size: 18px;
-    color: #777777;
+    font-size: 30px;
+    color: #fff;
     letter-spacing: 0px;
-    font-family: 'poppiens', sans-serif;
+    font-family: 600;
+    font-style: bold;
+    text-align: right;
 }
 
 

@@ -3,11 +3,12 @@
                 <span>Primary</span>
                 <h2>Dashboard</h2>
             </div>
+            
             <div class="user--info">
-                <div class="search--box">
-                    <i class="fa solid fa-search"></i>
-                    <input type="text" placeholder="Search" />
-                </div>
-                <img src="" alt="">
+             <a href="#">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Log out</span>
+            </a>
+            <img src="#" alt="User Image">
             </div>
         </div>

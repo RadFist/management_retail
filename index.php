@@ -1,5 +1,6 @@
 <?php
 include 'component/connection.php';
+include 'function_index.php';
 ?> 
 
 <!DOCTYPE html>
@@ -37,7 +38,7 @@ include 'component/connection.php';
                         </div>
                         <i class="fas fa-archive"></i>
                     </div>
-                    <span class="card-detail">_________</span>
+                    <span class="card-detail"><?php echo"$produk_total";?></span>
                 </div>
 
                 <div class="payment--card dark-green">
@@ -48,7 +49,7 @@ include 'component/connection.php';
                         </div>
                         <i class="fas fa-cart-plus"></i>
                     </div>
-                    <span class="card-detail">_________</span>
+                    <span class="card-detail"><?php echo"$supplier_total";?></span>
                 </div>
 
                 <div class="payment--card dark-blue">
@@ -59,7 +60,7 @@ include 'component/connection.php';
                         </div>
                         <i class="fas fa-user"></i>
                     </div>
-                    <span class="card-detail">_________</span>
+                    <span class="card-detail"><?php echo"$karyawan_total";?></span>
                 </div>
 
                 <div class="payment--card dark-purple">
@@ -70,16 +71,25 @@ include 'component/connection.php';
                         </div>
                         <i class="fas fa-book"></i>
                     </div>
-                    <span class="card-detail">_________</span>
+                    <span class="card-detail"><?php echo"$stock_total";?></span>
                 </div>
 
             </div>
         </div>
 
-        <div class="card--container" >
-            <h3 class="main--title">Statistik</h3>  
-        </div>
-
+        <div class="card--container">
+            <div class="card--chart">
+                <div class="chart">
+                    <h3 class="main--title">Statistik</h3>
+                    <h3 class="main--title right" id="tahun">Tahun</h3>
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+        </div>        
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <?php include "component/chart1.php";?>
         
     </div>
 </body>

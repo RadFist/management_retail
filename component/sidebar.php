@@ -31,11 +31,6 @@
                         <span>Bantuan</span>
                     </a>
                 </li>
-                <li><a href="#">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span class="nav-item">Log out</span>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
