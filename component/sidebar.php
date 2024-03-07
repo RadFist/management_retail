@@ -1,16 +1,16 @@
 <div class="sidebar">
         <div class="logo">
             <ul class="menu">
-                <li class="active">
-                    <a href="#">
+                <li class="active" id="li_dashboard">
+                    <a href="index.php">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li id="li_karyawan" onclick="karyawan()">
+                    <a href="karyawan.php" >
                         <i class="fas fa-user"></i>
-                        <span>Profile</span>
+                        <span>Karyawan</span>
                     </a>
                 </li>
                 <li>
@@ -32,5 +32,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
     </div>
+</div>
+
+<script src="src.js"></script>

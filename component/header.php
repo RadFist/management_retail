@@ -1,14 +1,15 @@
 <div class="header--wrapper">
-            <div class="header--title">
-                <span>Primary</span>
-                <h2>Dashboard</h2>
-            </div>
-            
-            <div class="user--info">
-             <a href="#">
+    <h2>M E M E G.</h2>
+    <div class="header--title">
+        <h2>Dashboard</h2>
+    </div>
+    <div class="user--info">
+        <div class="logout--box">
+            <a href="#">
                 <i class="fas fa-sign-out-alt"></i>
-                <span class="nav-item">Log out</span>
+                <span class="nav-logout">Logout</span>
             </a>
-            <img src="#" alt="User Image">
-            </div>
         </div>
+        <img src="" alt="">
+    </div>
+</div>
