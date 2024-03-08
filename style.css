@@ -52,15 +52,27 @@ body{
 }
 
 .menu li{
-    padding: 1rem;
+    padding: 1rem 0.5rem;
+    opacity: 0.5;
     margin: 8px 0;
     border-radius: 8px;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.7s ease-in-out;
 }
 
 .menu li:hover, .active{
     background: #e0e0e058;
+    opacity: 1;
 }
+
+.menu .active {
+    opacity: 1;
+   
+}
+.menu li:hover {
+    opacity: 1;
+   
+}
+
 
 .menu a{
     color: #fff;
@@ -269,3 +281,4 @@ body{
 .dark-blue{
     background: rgb(125, 125, 255);
 }
+
