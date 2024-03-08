@@ -282,3 +282,19 @@ body{
     background: rgb(125, 125, 255);
 }
 
+.button{
+    background-color: rgba(113, 99, 186, 225);
+    color: #fff;
+}
+
+tbody tr td a i{
+    color: rgba(113, 99, 186, 225);
+    font-size: 20px;
+}
+tbody tr td a {
+    padding: 0 5px;
+    margin: 0 5px;
+}
+ tbody{
+    text-align: center;
+ }

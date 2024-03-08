@@ -78,7 +78,7 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
                     <div class="card--header">
                         <div class="amount">
                             <span class="title">4</span>
-                            <span class="amount-value">Stock Barang</span>
+                            <span class="amount-value">Laba Kotor</span>
                         </div>
                         <i class="fas fa-book"></i>
                     </div>
