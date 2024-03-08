@@ -103,6 +103,8 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
     <?php include "component/chart1.php";?>
         
     </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

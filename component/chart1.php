@@ -1,14 +1,9 @@
 <?php 
-
-$data1 = 450;
-$data2 = 200;
-$data3 = 300;
-$data4 = 250;
-$data5 = 150;
-$data6 = 350;
+$data = [450, 200, 300, 250, 150, 350];
+?>
 
 
-echo"
+
 <script>
 var ctx = document.getElementById('lineChart').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -17,7 +12,7 @@ var myChart = new Chart(ctx, {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
         datasets: [{
             label: '# of Votes',
-            data: [$data1, $data2, $data3, $data4, $data5, $data6],
+            data: <?php echo json_encode($data)?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -47,5 +42,3 @@ var myChart = new Chart(ctx, {
 });
 </script>
 
-";
-?>

@@ -13,16 +13,16 @@
                         <span>Karyawan</span>
                     </a>
                 </li>
-                <li id="li_supplier" onclick="test()">
+                <li id="li_supplier">
                     <a href="supplier.php">
                         <i class="fas fa-chart-bar"></i>
                         <span>Supplier</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li id="li_produk">
+                    <a href="produk.php">
                         <i class="fas fa-briefcase"></i>
-                        <span>Fitur</span>
+                        <span>Produk</span>
                     </a>
                 </li>
                 <li>
@@ -35,4 +35,3 @@
     </div>
 </div>
 
-<script defer src="script.js"></script>
