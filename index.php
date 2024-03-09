@@ -1,6 +1,11 @@
 <?php
 include 'component/connection.php';
 include 'function.php';
+
+$total = total_laba_kotor($connect);
+
+
+
 $title = "Dashboard";
 
 
@@ -82,7 +87,7 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
                         </div>
                         <i class="fas fa-book"></i>
                     </div>
-                    <span class="card-detail">0</span>
+                    <span class="card-detail">Rp.<?php echo"$total";?></span>
                 </div>
 
             </div>

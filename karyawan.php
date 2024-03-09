@@ -29,7 +29,7 @@ $title = "Karyawan";
     
     <div class="card--container">
         <!-- table start -->
-        <a href="#" class=" button mb-3 btn "><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
+        <a href="input_component/input_karyawan.php" class=" button mb-3 btn "><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
         <table id="tableformat" class="table table-striped table-bordered table-hover ">
             <thead>
                 <tr>
@@ -37,6 +37,7 @@ $title = "Karyawan";
                     <th scope="col">Alamat</th>
                     <th scope="col">No Telp</th>
                     <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">tanggal lahir</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
@@ -50,10 +51,11 @@ $title = "Karyawan";
             <td><?= $tampil['alamat']; ?></td>
             <td><?= $tampil['np']; ?></td>
             <td><?= $tampil['jenis_kelamin']; ?></td>
+            <td><?= $tampil['tanggal_lahir']; ?></td>
             <td>
                 <a href="#" type="button"><i class="fa fa-pen"></i></a>
                 <!-- delete -->
-                <a href="#"><i class="fa fa-trash"></i></a>
+                <a href="logic/delete.php?delete_karyawan=<?= $tampil['id_karyawan'] ?>"><i class="fa fa-trash"></i></a>
             </td>
         </tr>
         <?php endforeach; ?>

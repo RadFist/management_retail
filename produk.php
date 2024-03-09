@@ -3,6 +3,7 @@ include 'component/connection.php';
 include 'function.php';
 
 $dataProduk = getAllData($connect, "tb_produk");
+
 $title = "produk";
 ?>
 
@@ -29,12 +30,12 @@ $title = "produk";
 
         <div class="card--container">
             <!-- table start -->
-            <a href="#" class="button mb-3 btn"><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
+            <a href="input_component/input_produk.php" class="button mb-3 btn"><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
             <table id="tableformat" class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Produk</th>
-                        <th scope="col">Jumlah</th>
+                        <th scope="col">Stock Barang</th>
                         <th scope="col">Harga</th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -47,7 +48,7 @@ $title = "produk";
                             <td>Rp.<?= $tampil['harga']; ?></td>
                             <td>
                                 <a href="#" class="edit"><i class="fa fa-pen" aria-hidden="true"></i></a>
-                                <a href="#" class="delete"><i class="fa fa-trash"></i></a>
+                                <a href="logic/delete.php?delete_produk=<?= $tampil['id_produk'] ?>" class="delete"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

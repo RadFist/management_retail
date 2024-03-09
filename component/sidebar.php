@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="login.php">
                         <i class="fas fa-question-circle"></i>
                         <span>Bantuan</span>
                     </a>

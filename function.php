@@ -19,4 +19,10 @@ function getTotalCount($connect, $table, $column) {
 
     return $result;
 }
+function total_laba_kotor($connect){
+    $query = "SELECT SUM(jumlah * harga) AS total FROM tb_produk;";
+    $sql = mysqli_query($connect, $query);
+    $result = mysqli_fetch_assoc($sql);
+    return $result['total'];
+}
 ?>

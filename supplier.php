@@ -28,7 +28,7 @@ $title = "Supplier";
 
         <div class="card--container">
             <!-- table start -->
-            <a href="#" class="button mb-3 btn"><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
+            <a href="input_component/input_supplier.php" class="button mb-3 btn"><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
             <table id="tableformat" class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
@@ -48,7 +48,7 @@ $title = "Supplier";
                                 <a href="#" class="me-2 edit link-light">
                                     <i class="fa fa-pen" aria-hidden="true"></i>
                                 </a>
-                                <a href="#">
+                                <a href="logic/delete.php?delete_supplier=<?= $tampil['id_supplier']?>">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>
