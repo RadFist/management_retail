@@ -7,7 +7,7 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li id="li_karyawan"">
+                <li id="li_karyawan">
                     <a href="karyawan.php" >
                         <i class="fas fa-user"></i>
                         <span>Karyawan</span>

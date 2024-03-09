@@ -1,3 +1,21 @@
+<?php
+include "../component/connection.php";
+include "../function.php";
+$id ="";
+$name = "";
+$np = "";
+$alamat = "";
+
+if(isset($_GET['edit_supplier'])){
+    $id = $_GET['edit_supplier'];
+    $data = getAllDatabyid($connect,"tb_supplier","id_supplier",$id);
+    $name =  $data['Nama'];
+    $alamat =  $data['alamat'];
+    $np =  $data['np'];
+    
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,29 +27,29 @@
   <body>
     <section class="container">
       <header>Input Data Supplier</header>
-      <form action="../logic/input_logic.php" method="POST" class="form">
+      <form action="../logic/<?= isset($_GET['edit_supplier']) ? 'edit' : 'input_logic' ?>.php" method="POST" class="form">
 
         <div class="input-box" hidden>
             <label>Id Supplier</label>
-            <input type="number" placeholder="Masukan id supplier" value="" />
+            <input name="id_supplier" type="number" placeholder="Masukan id supplier" value="<?= $id ?>"/>
         </div>
 
         <div class="input-box">
           <label>Nama</label>
-          <input name="name_supplier" type="text" placeholder="Masukan nama lengkap" required />
+          <input name="name_supplier" type="text" placeholder="Masukan nama lengkap" value="<?= $name ?>" required />
         </div>
 
         <div class="column">
           <div class="input-box">
             <label>No telepon</label>
-            <input name="np" type="number" placeholder="Masukkan nomor telepon" required />
+            <input name="np" type="number" placeholder="Masukkan nomor telepon" value="<?= $np ?>" required />
           </div> 
         </div>
         <div class="input-box address">
           <label>Alamat</label>
-          <input name="alamat" type="text" placeholder="Masukkan alamat anda" required />
+          <input name="alamat" type="text" placeholder="Masukkan alamat anda" value="<?= $alamat ?>" required />
         </div>
-        <button type="submit" name="submit" value="simpan_supplier">Submit</button>
+       <button type="submit" name="submit" value="<?= isset($_GET['edit_supplier']) ? 'edit_supplier' : 'simpan_supplier' ?>" >Submit</button>
       </form>
     </section>
   </body>

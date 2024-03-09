@@ -39,7 +39,7 @@ body{
 
 .logo{
     height: 80px;
-    padding: 16px;
+    padding: 7px;
 }
 
 
@@ -48,6 +48,7 @@ body{
     position: relative;
     list-style: none;
     padding: 0;
+    
 
 }
 
@@ -58,6 +59,7 @@ body{
     border-radius: 8px;
     transition: all 0.7s ease-in-out;
 }
+
 
 .menu li:hover, .active{
     background: #e0e0e058;
@@ -119,6 +121,12 @@ body{
 
 .header--title{
     color: rgba(113, 99, 186, 225);
+}
+.header--title h2 {
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    margin: auto;
 }
 
 .user--info{

@@ -45,7 +45,7 @@ $title = "Supplier";
                             <td><?= $tampil['alamat']; ?></td>
                             <td><?= $tampil['np']; ?></td>
                             <td>
-                                <a href="#" class="me-2 edit link-light">
+                                <a href="input_component/input_supplier.php?edit_supplier=<?= $tampil['id_supplier']?>" class="me-2 edit link-light">
                                     <i class="fa fa-pen" aria-hidden="true"></i>
                                 </a>
                                 <a href="logic/delete.php?delete_supplier=<?= $tampil['id_supplier']?>">

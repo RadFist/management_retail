@@ -22,6 +22,7 @@
         </div>
 
         <button>Login</button>
+          <label>Belum punya akun?<a href="regis.php">Regist</a></label>
       </form>
     </section>
   </body>

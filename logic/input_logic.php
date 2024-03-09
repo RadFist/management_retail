@@ -49,7 +49,7 @@ if(isset($_POST['submit']))
     $stmt = mysqli_prepare($connect, $query);
     
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, 'sss', $name_supplier, $np, $alamat);
+        mysqli_stmt_bind_param($stmt, 'sss', $name_supplier,$alamat, $np);
         $result = mysqli_stmt_execute($stmt);
         
         if($result){
