@@ -15,16 +15,22 @@
                 </li>
                 <li id="li_supplier">
                     <a href="supplier.php">
-                        <i class="fas fa-chart-bar"></i>
+                        <i class="fas fa-cart-plus"></i>
                         <span>Supplier</span>
                     </a>
                 </li>
+                <!-- sub menu -->
                 <li id="li_produk">
-                    <a href="produk.php">
-                        <i class="fas fa-briefcase"></i>
-                        <span>Produk</span>
-                    </a>
-                </li>
+                <a href="#">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Record</span>
+                    <i class="fas fa-caret-down"></i>
+                </a>
+                <ul>
+                    <li><a href="#"><span>stock in</span></a></li>
+                    <li id="SubMenu_produk"><a href="produk.php"><span>produk</span></a></li>
+                </ul>
+            </li>
                 <li>
                     <a href="login.php">
                         <i class="fas fa-question-circle"></i>

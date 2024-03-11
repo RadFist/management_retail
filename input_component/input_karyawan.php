@@ -34,22 +34,22 @@ if(isset($_GET['edit_karyawan'])){
 
         <div class="input-box" hidden>
             <label>Id Karyawan</label>
-            <input name="id_karyawan" type="number" placeholder="Masukan id Karyawan" value=<?= $id ?> />
+            <input name="id_karyawan" type="number" placeholder="Masukan id Karyawan" value="<?= $id ?>" />
         </div>
         <div class="input-box">
           <label>Nama</label>
-          <input name="nama_karyawan" type="text" placeholder="Masukan nama lengkap" value=<?= $name ?>  required />
+          <input name="nama_karyawan" type="text" placeholder="Masukan nama lengkap" value="<?= $name ?>"  required />
         </div>
 
         <div class="column">
           <div class="input-box">
             <label>No telepon</label>
-            <input name="np" type="number" placeholder="Masukkan nomor telepon" value=<?= $np ?> required />
+            <input name="np" type="number" placeholder="Masukkan nomor telepon" value="<?= $np ?>" required />
           </div>
 
           <div class="input-box">
             <label>Tanggal lahir</label>
-            <input name="tanggal_lahir" type="date" placeholder="Masukkan tanggal lahir" value=<?= $tanggal_lahir ?> required />
+            <input name="tanggal_lahir" type="date" placeholder="Masukkan tanggal lahir" value="<?= $tanggal_lahir ?>" required />
           </div>
         </div>
 

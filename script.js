@@ -2,6 +2,7 @@ const liKaryawan = document.getElementById('li_karyawan');
 const lidashboard = document.getElementById('li_dashboard');
 const lisupplier = document.getElementById('li_supplier');
 const liproduk = document.getElementById('li_produk');
+const SubMenu_produk = document.getElementById('SubMenu_produk');
 
 function updateNavClass(activeTabId) {
     
@@ -9,6 +10,7 @@ function updateNavClass(activeTabId) {
     liKaryawan.classList.toggle('active', activeTabId === 'karyawan');
     lisupplier.classList.toggle('active', activeTabId === 'supplier');
     liproduk.classList.toggle('active', activeTabId === 'produk');
+    SubMenu_produk.classList.toggle('active', activeTabId === 'produk');
 }
 function updateKaryawanClass() {
     const currentPath = window.location.pathname;
@@ -31,5 +33,4 @@ window.addEventListener('popstate', function (event) {
         updateKaryawanClass();
     }
 });
-
 
