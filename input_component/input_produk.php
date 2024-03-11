@@ -31,7 +31,7 @@ if(isset($_GET['edit_produk'])){
         <form action="../logic/<?= isset($_GET['edit_produk']) ? 'edit' : 'input_logic' ?>.php" method="POST" class="form">
             <div class="input-box" hidden>
                 <label>Id produk</label>
-                <input name="id_produk" type="number" placeholder="Masukan id produk" value=<?= $id ?> />
+                <input name="id_produk" type="number" placeholder="Masukan id produk" value="<?= $id ?>" />
             </div>
 
             <div class="column">

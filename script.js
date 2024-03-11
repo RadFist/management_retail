@@ -1,19 +1,22 @@
+const currentPath = window.location.pathname;
 const liKaryawan = document.getElementById('li_karyawan');
 const lidashboard = document.getElementById('li_dashboard');
 const lisupplier = document.getElementById('li_supplier');
 const liproduk = document.getElementById('li_produk');
 const SubMenu_produk = document.getElementById('SubMenu_produk');
+const SubMenu_StockIn = document.getElementById('SubMenu_stock_in');
+
 
 function updateNavClass(activeTabId) {
     
     lidashboard.classList.toggle('active', activeTabId === 'dashboard');
     liKaryawan.classList.toggle('active', activeTabId === 'karyawan');
     lisupplier.classList.toggle('active', activeTabId === 'supplier');
-    liproduk.classList.toggle('active', activeTabId === 'produk');
+    liproduk.classList.toggle('active', activeTabId === 'produk' || activeTabId === 'stock_in');
     SubMenu_produk.classList.toggle('active', activeTabId === 'produk');
+    SubMenu_StockIn.classList.toggle('active', activeTabId === 'stock_in');
 }
 function updateKaryawanClass() {
-    const currentPath = window.location.pathname;
     
     if (currentPath.includes('karyawan.php')) {
         updateNavClass('karyawan');
@@ -23,6 +26,8 @@ function updateKaryawanClass() {
         updateNavClass('supplier');
     } else if (currentPath.includes('produk.php')) {
         updateNavClass('produk');
+    } else if (currentPath.includes('stock_in.php')) {
+        updateNavClass('stock_in');
     }
 }
 

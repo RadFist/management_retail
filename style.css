@@ -175,6 +175,12 @@ body{
     margin-bottom: 1rem;
 }
 
+.header--wrapper h2{
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0;
+}
+
 .header--title{
     color: rgba(113, 99, 186, 225);
 }
