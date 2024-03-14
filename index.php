@@ -7,7 +7,7 @@ $total = total_laba_kotor($connect);
 
 
 $title = "Dashboard";
-12;
+
 
 
 //product total count database
