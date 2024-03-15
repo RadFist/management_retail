@@ -299,11 +299,12 @@ body{
 
 .card--chart{
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 20px;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 0;
     width: 100%;
     padding: 20px;
-    padding-top: 0;
+    padding-top: 10;
+    margin-top: 10px;
 }
 
 .chart{
@@ -311,7 +312,7 @@ body{
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.2);
-    width: 80%;
+    width: 90%;
     margin-bottom: 10px;
 }
 
@@ -320,7 +321,7 @@ body{
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.2);
-    width: 40%;
+    width: 100%;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;

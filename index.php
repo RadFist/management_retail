@@ -92,7 +92,6 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
                     </div>
                     <span class="card-detail">Rp.<?php echo "$total"; ?></span>
                 </div>
-
             </div>
         </div>
 

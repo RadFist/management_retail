@@ -39,8 +39,16 @@ if(isset($_GET['delete_karyawan'])){
     $table = "`tb_produk`";
     $column = "id_produk";   
     delete($connect,$table,$column,$id,$location);    
-} else {
+} else if(isset($_GET['delete_stock_in'])) {
+    $id = $_GET['delete_stock_in'];
+    echo "$id";
+    $location = "../stock_in.php?deleteSuccess";
+    $table = "`tb_restok`";
+    $column = "id_restok";   
+    delete($connect,$table,$column,$id,$location);    
+} else{
     header("location: ../index.php?deleteError");
+
 }
 
 ?>

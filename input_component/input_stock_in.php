@@ -1,6 +1,9 @@
 <?php
 include "../component/connection.php";
 include "../function.php";
+
+$data = getAllSupplier($connect);
+
 $id ="";
 $name =  "";
 $alamat = "";
@@ -27,6 +30,7 @@ if(isset($_GET['edit_karyawan'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="input.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   </head>
   <body>
     <section class="container">
@@ -37,41 +41,45 @@ if(isset($_GET['edit_karyawan'])){
             <label>Id Karyawan</label>
             <input name="id_karyawan" type="number" placeholder="Masukan id Karyawan" value="<?= $id ?>" />
         </div>
-        <div class="input-box">
-          <label>Nama</label>
-          <input name="nama_karyawan" type="text" placeholder="Masukan nama lengkap" value="<?= $name ?>"  required />
+
+
+        <div class="select-btn">
+          <label>produk</label>
+          <i class="fas fa-caret-down"></i>
         </div>
+          <div class="content">
+            <div class="search">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="cari">
+            </div>
+            <ul class="options">
+            <?php foreach ($data as $tampil) : ?>
+                <li value="<?php echo $tampil['id_supplier']; ?>"><?php echo $tampil['Nama']; ?></li>
+            <?php endforeach ?>
+            </ul>
+          </div>
 
         <div class="column">
           <div class="input-box">
-            <label>No telepon</label>
-            <input name="np" type="number" placeholder="Masukkan nomor telepon" value="<?= $np ?>" required />
+            <label>Supplier</label>
+            <select>
+                <option value="" default>-</option>
+                 <?php foreach ($data as $tampil) : ?>
+                    <option value="<?php echo $tampil['id_supplier']; ?>"><?php echo $tampil['Nama']; ?></option>
+                  <?php endforeach ?>
+             </select>
           </div>
 
           <div class="input-box">
-            <label>Tanggal lahir</label>
+                <label>jumlah restock produk</label>
+                <input name="jumlah_produk" type="number" placeholder="Masukkan jumlah produk" value="<?= $jumlah ?>" required />
+            </div>
+
+          <div class="input-box">
+            <label>Tanggal</label>
             <input name="tanggal_lahir" type="date" placeholder="Masukkan tanggal lahir" value="<?= $tanggal_lahir ?>" required />
           </div>
-        </div>
-
-        <div class="gender-box">
-          <h3>Jenis Kelamin</h3>
-          <div class="gender-option">
-            <div class="gender">
-              <input type="radio" id="check-male" name="gender" value="Laki-Laki" <?= $jk == "Laki-Laki" ? 'checked' : "" ?> />
-              <label for="check-male">Laki Laki</label>
-            </div>
-            <div class="gender">
-              <input type="radio" id="check-female" name="gender" value="Perempuan" <?= $jk != "Laki-Laki" ? 'checked' : "" ?>  />
-              <label for="check-female">Perempuan</label>
-            </div>
-          
-          </div>
-        </div>
-        <div class="input-box address">
-          <label>Alamat</label>
-          <input name="alamat" type="text" placeholder="Masukkan alamat karyawan" value="<?= $alamat ?>" required />
-        </div>
+       
         <button type="submit" name="submit" value="<?= isset($_GET['edit_karyawan']) ? 'edit_karyawan' : 'simpan_karyawan' ?>">Submit</button>
       </form>
     </section>

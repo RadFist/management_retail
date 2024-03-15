@@ -1,4 +1,9 @@
 <?php
+include 'component/connection.php';
+include 'function.php';
+
+$data= getDataStockIn($connect);
+
 $title = "Stock in";
 ?>
 
@@ -30,28 +35,30 @@ $title = "Stock in";
 
         <div class="card--container">
             <!-- table start -->
-            <a href="input_component/input_produk.php" class="button mb-3 btn"><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
+            <a href="input_component/input_stock_in.php" class="button mb-3 btn"><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
             <table id="tableformat" class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Produk</th>
-                        <th scope="col">Stock Barang</th>
-                        <th scope="col">Harga</th>
+                        <th scope="col">supplier</th>
+                        <th scope="col">jumlah restok</th>
+                        <th scope="col">tanggal</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php //foreach ($dataProduk as $tampil) : ?>
+                    <?php foreach ($data as $tampil) : ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?= $tampil['produk']; ?></td>
+                            <td><?= $tampil['nama']; ?></td>
+                            <td><?= $tampil['jumlah']; ?></td>
+                            <td><?= $tampil['tanggal']; ?></td>
                             <td>
-                                <a href="input_component/input_produk.php?edit_produk=<?= $tampil['id_produk']?>" class="edit"><i class="fa fa-pen" aria-hidden="true"></i></a>
-                                <a href="logic/delete.php?delete_produk=<?= $tampil['id_produk'] ?>" class="delete"><i class="fa fa-trash"></i></a>
+                                <a href="input_component/input_stock_in.php?edit_stock_in=<?= $tampil['id']?>" class="edit"><i class="fa fa-pen" aria-hidden="true"></i></a>
+                                <a href="logic/delete.php?delete_stock_in=<?= $tampil['id'] ?>" class="delete"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
-                    <?php //endforeach; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
             <!-- table end -->

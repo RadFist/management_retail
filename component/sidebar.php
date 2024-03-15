@@ -21,16 +21,29 @@
                 </li>
                 <!-- sub menu -->
                 <li id="li_produk">
-                <a href="#">
-                    <i class="fas fa-briefcase"></i>
-                    <span>Record</span>
-                    <i class="fas fa-caret-down"></i>
-                </a>
-                <ul>
-                    <li id="SubMenu_stock_in"><a href="stock_in.php"><span>stock in</span></a></li>
-                    <li id="SubMenu_produk"><a href="produk.php"><span>produk</span></a></li>
-                </ul>
-            </li>
+                    <a href="#">
+                        <i class="fas fa-box"></i>
+                        <span>produk</span>
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul>
+                        <li id="SubMenu_stock_in"><a href="stock_in.php"><span>stock in</span></a></li>
+                        <li id="SubMenu_produk"><a href="produk.php"><span>list-produk</span></a></li>
+                        <li id="SubMenu_produk"><a href="#"><span>kategori</span></a></li>
+                    </ul>
+                </li>
+                <li id="li_penjualan">
+                    <a href="supplier.php">
+                        <i class="fas fa-tag"></i>
+                        <span>penjualan</span>
+                    </a>
+                </li>
+                <li id="li_record">
+                    <a href="supplier.php">
+                        <i class="fas fa-briefcase"></i>
+                        <span>record</span>
+                    </a>
+                </li>
                 <li>
                     <a href="login.php">
                         <i class="fas fa-question-circle"></i>

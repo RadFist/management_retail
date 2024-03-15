@@ -2,7 +2,7 @@
 include 'component/connection.php';
 include 'function.php';
 
-$dataProduk = getAllData($connect, "tb_produk");
+$dataProduk = getproductData($connect);
 
 $title = "produk";
 ?>
@@ -44,7 +44,7 @@ $title = "produk";
                     <?php foreach ($dataProduk as $tampil) : ?>
                         <tr>
                             <td><?= $tampil['nama_produk']; ?></td>
-                            <td><?= $tampil['jumlah']; ?></td>
+                            <td><?= $tampil['total_stock']; ?></td>
                             <td>Rp.<?= $tampil['harga']; ?></td>
                             <td>
                                 <a href="input_component/input_produk.php?edit_produk=<?= $tampil['id_produk']?>" class="edit"><i class="fa fa-pen" aria-hidden="true"></i></a>
