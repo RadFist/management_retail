@@ -7,7 +7,6 @@ $total = total_laba_kotor($connect);
 
 
 $title = "Dashboard";
-12;
 
 
 //product total count database
@@ -18,7 +17,7 @@ $supplier_total = getTotalCount($connect, 'tb_supplier', 'id_supplier');
 $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
 
 
-?> 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,16 +31,16 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
 </head>
 
 <body>
-    <?php 
+    <?php
     include 'component/sidebar.php';
     ?>
 
-    
+
     <div class="main--content">
-    
-    <?php 
-    include 'component/header.php';
-    ?>
+
+        <?php
+        include 'component/header.php';
+        ?>
 
         <!-- card -->
         <div class="card--container">
@@ -55,7 +54,7 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
                         </div>
                         <i class="fas fa-archive"></i>
                     </div>
-                    <span class="card-detail"><?php echo"$produk_total";?></span>
+                    <span class="card-detail"><?php echo "$produk_total"; ?></span>
                 </div>
 
                 <div class="payment--card dark-green">
@@ -66,7 +65,7 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
                         </div>
                         <i class="fas fa-cart-plus"></i>
                     </div>
-                    <span class="card-detail"><?php echo"$supplier_total";?></span>
+                    <span class="card-detail"><?php echo "$supplier_total"; ?></span>
                 </div>
 
                 <div class="payment--card dark-blue">
@@ -77,7 +76,7 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
                         </div>
                         <i class="fas fa-user"></i>
                     </div>
-                    <span class="card-detail"><?php echo"$karyawan_total";?></span>
+                    <span class="card-detail"><?php echo "$karyawan_total"; ?></span>
                 </div>
 
                 <div class="payment--card dark-purple">
@@ -88,26 +87,64 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
                         </div>
                         <i class="fas fa-book"></i>
                     </div>
-                    <span class="card-detail">Rp.<?php echo"$total";?></span>
+                    <span class="card-detail">Rp.<?php echo "$total"; ?></span>
                 </div>
 
             </div>
         </div>
 
-        <div class="card--container">
-            <div class="card--chart">
-                <div class="chart">
-                    <h3 class="main--title">Statistik</h3>
-                    <h3 class="main--title right" id="tahun">Tahun</h3>
-                    <canvas id="lineChart"></canvas>
+
+        <div class="card--chart">
+            <div class="chart">
+                <h3 class="main--title">Statistik</h3>
+                <h3 class="main--title right" id="tahun">Tahun</h3>
+                <canvas id="lineChart"></canvas>
+            </div>
+
+            <div class="chart2">
+                <h3 class="main--title">Rekomended</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>no</th>
+                                <th>Produk</th>
+                                <th>Terjual</th>
+                                <th>Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>kaca spion</td>
+                                <td>100</td>
+                                <td>10.000</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>indomie</td>
+                                <td>20</td>
+                                <td>20.000</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>celana dalam</td>
+                                <td>18</td>
+                                <td>30.000</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>        
+        </div>
+
+
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
-    <?php include "component/chart1.php";?>
-        
+    <?php include "component/chart1.php"; ?>
+
     </div>
 
     <script src="script.js"></script>
