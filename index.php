@@ -8,6 +8,9 @@ $total = total_laba_kotor($connect);
 
 $title = "Dashboard";
 
+$berubah = "berubah lagi men";
+
+
 
 //product total count database
 $produk_total = getTotalCount($connect, 'tb_produk', 'id_produk');
