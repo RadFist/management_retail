@@ -41,13 +41,30 @@ if(isset($_POST['submit'])){
         $tanggal_lahir = $_POST['tanggal_lahir'];
         $jk = $_POST['gender'];
         $alamat = $_POST['alamat'];
-        var_dump($_POST);
+      
 
         $query = "UPDATE `tb_karyawan` SET `Nama`='$nama_karyawan', `alamat`='$alamat', `np`='$np', `jenis_kelamin`='$jk', `tanggal_lahir`='$tanggal_lahir' WHERE `id_karyawan`='$id'";
         $sql = mysqli_query($connect, $query);
 
         if($sql){
             header("location:../karyawan.php?success");
+            exit();
+        } else {
+            echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_error($connect);
+        }
+    } else if($_POST['submit'] == 'edit_stock_in') {
+        var_dump($_POST);
+        $id = $_POST['id_restok'];
+        $produk = $_POST['produk'];
+        $supplier = $_POST['supplier'];
+        $jumlah_produk = $_POST['jumlah_produk'];
+        $tanggal = $_POST['tanggal'];
+
+        $query = "UPDATE `tb_restok` SET `id_produk`=$produk  ,`id_supplier`= $supplier,`jumlah_restok`=$jumlah_produk, `tanggal`= '$tanggal'  WHERE `id_restok`='$id'";
+        $sql = mysqli_query($connect, $query);
+
+        if($sql){
+            header("location:../stock_in.php?success");
             exit();
         } else {
             echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_error($connect);

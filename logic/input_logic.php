@@ -65,6 +65,7 @@ if(isset($_POST['submit']))
     }
 
     mysqli_close($connect);
+    
     }else if($_POST['submit'] == 'simpan_produk')
     {
       
@@ -82,6 +83,34 @@ if(isset($_POST['submit']))
         
         if($result){
             header("location:../produk.php?success");
+            exit();
+        } else {
+            echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_stmt_error($stmt);
+        }
+        
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "Gagal membuat pernyataan SQL: " . mysqli_error($connect);
+    }
+
+    mysqli_close($connect);
+    }else if($_POST['submit'] == 'simpan_stock_in')
+    {
+    $produk = mysqli_real_escape_string($connect, $_POST['produk']);
+    $supplier = mysqli_real_escape_string($connect, $_POST['supplier']);
+    $jumlah = mysqli_real_escape_string($connect, $_POST['jumlah_produk']);
+    $tanggal = mysqli_real_escape_string($connect, $_POST['tanggal']);
+    
+    $query = "INSERT INTO `tb_restok`(`id_produk`, `id_supplier`, `jumlah_restok`, `tanggal`) VALUES (?, ?, ? ,?)";
+    
+    $stmt = mysqli_prepare($connect, $query);
+    
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, 'ssss', $produk, $supplier, $jumlah, $tanggal);
+        $result = mysqli_stmt_execute($stmt);
+        
+        if($result){
+            header("location:../stock_in.php?success");
             exit();
         } else {
             echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_stmt_error($stmt);

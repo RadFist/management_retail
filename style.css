@@ -298,13 +298,15 @@ body{
 }
 
 .card--chart{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-column-gap: 0;
+    display: flex;
+    row-gap: 50px;
+    column-gap:0px ;
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     padding-top: 10;
     margin-top: 10px;
+    justify-content: space-evenly;
+   
 }
 
 .chart{
@@ -312,8 +314,9 @@ body{
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    margin-bottom: 10px;
+    width: 60%;
+    margin: 10px;
+    
 }
 
 .chart2{
@@ -321,12 +324,13 @@ body{
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.2);
-    width: 100%;
+    width: 40%;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin: 10px;
 }
 
 .table-container {
@@ -343,7 +347,7 @@ table {
 }
 
 th, td {
-    text-align: left;
+    text-align: center;
     padding: 8px;
 }
 
@@ -407,3 +411,8 @@ tbody tr td a {
  thead tr th{
     text-align: center;
  }
+
+ .paginate_button.active .page-link {
+    background-color: rgba(113, 99, 186, 225) !important;
+    border: none  !important;
+  }

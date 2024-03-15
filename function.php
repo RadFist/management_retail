@@ -20,6 +20,7 @@ function getTotalCount($connect, $table, $column) {
 
     return $result;
 }
+
  function getproductData($connect){
     $query = "SELECT  p.*,
     COALESCE(r.jumlah_restok+p.jumlah, p.jumlah) AS total_stock
@@ -36,6 +37,18 @@ function getTotalCount($connect, $table, $column) {
 }
  function getAllSupplier($connect){
     $query = "SELECT `id_supplier`, `Nama` FROM `tb_supplier`";
+    $sql = mysqli_query($connect,$query);
+    $result = array();
+
+    while ($row = mysqli_fetch_assoc($sql)) {
+        $result[] = $row;
+    }
+
+    return $result;
+}
+
+function getAllProduct($connect){
+    $query = "SELECT `id_produk`, `nama_produk` FROM `tb_produk`";
     $sql = mysqli_query($connect,$query);
     $result = array();
 
