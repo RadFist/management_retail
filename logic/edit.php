@@ -6,9 +6,10 @@ if(isset($_POST['submit'])){
         $id = $_POST['id_produk'];
         $nama_produk = $_POST['nama_produk'];
         $jumlah = $_POST['jumlah_produk'];
+        $kategori = $_POST['kategori'];
         $harga = $_POST['harga_produk'];
 
-        $query = "UPDATE `tb_produk` SET `nama_produk`='$nama_produk', `jumlah`='$jumlah', `harga`='$harga' WHERE `id_produk`='$id'";
+        $query = "UPDATE `tb_produk` SET `nama_produk`='$nama_produk', `jumlah`='$jumlah', `id_kategori`='$kategori', `harga`='$harga' WHERE `id_produk`='$id'";
         $sql = mysqli_query($connect, $query);
         
         if($sql){
@@ -53,7 +54,6 @@ if(isset($_POST['submit'])){
             echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_error($connect);
         }
     } else if($_POST['submit'] == 'edit_stock_in') {
-        var_dump($_POST);
         $id = $_POST['id_restok'];
         $produk = $_POST['produk'];
         $supplier = $_POST['supplier'];
@@ -65,6 +65,18 @@ if(isset($_POST['submit'])){
 
         if($sql){
             header("location:../stock_in.php?success");
+            exit();
+        } else {
+            echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_error($connect);
+        }
+    } else if($_POST['submit'] == 'edit_kategori') {
+        $id = $_POST['id_kategori'];
+        $kategori = $_POST['kategori'];
+        $query = "UPDATE `tb_kategori` SET  `kategori`= '$kategori'  WHERE `id_kategori`='$id'";
+        $sql = mysqli_query($connect, $query);
+
+        if($sql){
+            header("location:../kategori.php?success");
             exit();
         } else {
             echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_error($connect);

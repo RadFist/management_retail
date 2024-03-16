@@ -34,6 +34,8 @@ if(isset($_GET['delete_karyawan'])){
     $column = "id_supplier";  
     delete($connect,$table,$column,$id,$location);    
 }else if(isset($_GET['delete_produk'])){
+    echo "logic belom di buat: jika di delete maka supplier juga harus ke delete";
+    die();
     $id = $_GET['delete_produk'];
     $location = "../produk.php?deleteSuccess";
     $table = "`tb_produk`";
@@ -41,10 +43,15 @@ if(isset($_GET['delete_karyawan'])){
     delete($connect,$table,$column,$id,$location);    
 } else if(isset($_GET['delete_stock_in'])) {
     $id = $_GET['delete_stock_in'];
-    echo "$id";
     $location = "../stock_in.php?deleteSuccess";
     $table = "`tb_restok`";
     $column = "id_restok";   
+    delete($connect,$table,$column,$id,$location);    
+} else if(isset($_GET['delete_kategori'])) {
+    $id = $_GET['delete_kategori'];
+    $location = "../kategori.php?deleteSuccess";
+    $table = "`tb_kategori`";
+    $column = "id_kategori";   
     delete($connect,$table,$column,$id,$location);    
 } else{
     header("location: ../index.php?deleteError");

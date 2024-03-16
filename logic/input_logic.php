@@ -72,13 +72,14 @@ if(isset($_POST['submit']))
     $nama_produk = mysqli_real_escape_string($connect, $_POST['nama_produk']);
     $jumlah_produk = mysqli_real_escape_string($connect, $_POST['jumlah_produk']);
     $harga_produk = mysqli_real_escape_string($connect, $_POST['harga_produk']);
+    $kategori = mysqli_real_escape_string($connect, $_POST['kategori']);
     
-    $query = "INSERT INTO `tb_produk`(`nama_produk`, `jumlah`, `harga`) VALUES (?, ?, ?)";
+    $query = "INSERT INTO `tb_produk`(`nama_produk`, `jumlah`, `id_kategori`, `harga`) VALUES (?, ?, ?, ?)";
     
     $stmt = mysqli_prepare($connect, $query);
     
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, 'sii', $nama_produk, $jumlah_produk, $harga_produk);
+        mysqli_stmt_bind_param($stmt, 'sisi', $nama_produk, $jumlah_produk, $kategori, $harga_produk);
         $result = mysqli_stmt_execute($stmt);
         
         if($result){
@@ -111,6 +112,32 @@ if(isset($_POST['submit']))
         
         if($result){
             header("location:../stock_in.php?success");
+            exit();
+        } else {
+            echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_stmt_error($stmt);
+        }
+        
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "Gagal membuat pernyataan SQL: " . mysqli_error($connect);
+    }
+
+    mysqli_close($connect);
+    }else if($_POST['submit'] == 'simpan_kategori')
+    {
+
+    $kategori = mysqli_real_escape_string($connect, $_POST['kategori']);
+    
+    $query = "INSERT INTO `tb_kategori`(`kategori`) VALUES (?)";
+    
+    $stmt = mysqli_prepare($connect, $query);
+    
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, 's', $kategori);
+        $result = mysqli_stmt_execute($stmt);
+        
+        if($result){
+            header("location:../kategori.php?success");
             exit();
         } else {
             echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_stmt_error($stmt);

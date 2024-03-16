@@ -1,10 +1,14 @@
 <?php
 include "../component/connection.php";
 include "../function.php";
+
+$data_kategori = getAllKategori($connect);
+
 $id ="";
 $name = "";
 $jumlah = "";
 $harga = "";
+$id_kategori = "";
 
 if(isset($_GET['edit_produk'])){
     $id = $_GET['edit_produk'];
@@ -12,6 +16,7 @@ if(isset($_GET['edit_produk'])){
     $name =  $data['nama_produk'];
     $jumlah =  $data['jumlah'];
     $harga =  $data['harga'];
+    $id_kategori = $data['id_kategori'];
 }
 ?>
 
@@ -43,6 +48,15 @@ if(isset($_GET['edit_produk'])){
                 <div class="input-box">
                     <label>Jumlah produk</label>
                     <input name="jumlah_produk" type="number" placeholder="Masukkan jumlah produk" value="<?= $jumlah ?>" required />
+                </div>
+                
+                <div class="input-box">
+                    <label>Kategori Produk</label>
+                    <select name="kategori">
+                        <?php foreach ($data_kategori as $tampil) : ?>
+                         <option value="<?php echo $tampil['id_kategori']; ?>" <?php echo ($tampil['id_kategori'] == $id_kategori) ? 'selected' : ''; ?>><?php echo $tampil['kategori']; ?></option>
+                        <?php endforeach ?>
+                     </select>
                 </div>
 
                 <div class="input-box">

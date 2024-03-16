@@ -23,9 +23,11 @@ function getTotalCount($connect, $table, $column) {
 
  function getproductData($connect){
     $query = "SELECT  p.*,
-    COALESCE(r.jumlah_restok+p.jumlah, p.jumlah) AS total_stock
+    COALESCE(r.jumlah_restok+p.jumlah, p.jumlah) AS total_stock,
+    k.kategori as kategori
     FROM tb_produk p
-    LEFT JOIN tb_restok r ON r.id_produk = p.id_produk;";
+    LEFT JOIN tb_restok r ON r.id_produk = p.id_produk
+    LEFT JOIN tb_kategori k ON k.id_kategori = p.id_kategori;";
     $sql = mysqli_query($connect,$query);
     $result = array();
 
@@ -59,6 +61,17 @@ function getAllProduct($connect){
     return $result;
 }
 
+function getAllKategori($connect){
+    $query = "SELECT * FROM `tb_kategori`";
+    $sql = mysqli_query($connect,$query);
+    $result = array();
+
+    while ($row = mysqli_fetch_assoc($sql)) {
+        $result[] = $row;
+    }
+
+    return $result;
+}
 
  function getAllDatabyid($connect,$table,$column,$id){
     $query = "SELECT * FROM $table WHERE $column = $id";

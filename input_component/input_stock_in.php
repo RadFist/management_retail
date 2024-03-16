@@ -34,7 +34,7 @@ if(isset($_GET['edit_stock_in'])){
   </head>
   <body>
     <section class="container">
-      <header>Input Data Karyawan</header>
+      <header>Input stok Masuk</header>
       <form action="../logic/<?= isset($_GET['edit_stock_in']) ? 'edit' : 'input_logic' ?>.php" method="POST" class="form">
 
         <div class="input-box" hidden>
