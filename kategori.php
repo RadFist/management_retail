@@ -58,9 +58,14 @@ $title = "kategori";
 
     <!-- table format -->
     <script>
-        $(document).ready(function() {
-            $('#tableformat').DataTable();
+    $(document).ready(function()
+    {
+        $('#tableformat').DataTable({
+            "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
+      ]
         });
+    })
     </script>
 </body>
 

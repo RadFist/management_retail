@@ -2,8 +2,8 @@
 include 'component/connection.php';
 include 'function.php';
 
-$dataKaryawan = getAllData($connect,"tb_karyawan");
-$title = "Karyawan";
+$dataRekap = getRecord($connect);
+$title = "Rekap data penjualan";
 ?>
 
 <!DOCTYPE html>
@@ -29,33 +29,31 @@ $title = "Karyawan";
     
     <div class="card--container">
         <!-- table start -->
-        <a href="input_component/input_karyawan.php" class=" button mb-3 btn "><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
+        <a href="input_component/input_record.php" class=" button mb-3 btn "><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
         <table id="tableformat" class="table table-striped table-bordered table-hover ">
             <thead>
                 <tr>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Alamat</th>
-                    <th scope="col">No Telp</th>
-                    <th scope="col">Jenis Kelamin</th>
-                    <th scope="col">tanggal lahir</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col">produk</th>
+                    <th scope="col">terjual</th>
+                    <th scope="col">Perekap</th>
+                    <th scope="col">tanggal</th>
+                    <th scope="col">aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- loop start -->
                 <?php  
-        foreach ($dataKaryawan as $tampil):
+        foreach ($dataRekap as $tampil):
             ?>
         <tr>
-            <td><?= $tampil['Nama']; ?></td>
-            <td><?= $tampil['alamat']; ?></td>
-            <td><?= $tampil['np']; ?></td>
-            <td><?= $tampil['jenis_kelamin']; ?></td>
-            <td><?= $tampil['tanggal_lahir']; ?></td>
+            <td><?= $tampil['produk']; ?></td>
+            <td><?= $tampil['terjual']; ?></td>
+            <td><?= $tampil['karyawan']; ?></td>
+            <td><?= $tampil['tanggal']; ?></td>
             <td>
-                <a href="input_component/input_karyawan.php?edit_karyawan=<?= $tampil['id_karyawan']?>" type="button"><i class="fa fa-pen"></i></a>
+                <a href="input_component/input_record.php?edit_record=<?= $tampil['id']?>" type="button"><i class="fa fa-pen"></i></a>
                 <!-- delete -->
-                <a href="logic/delete.php?delete_karyawan=<?= $tampil['id_karyawan'] ?>"><i class="fa fa-trash"></i></a>
+                <a href="logic/delete.php?delete_record=<?= $tampil['id'] ?>"><i class="fa fa-trash"></i></a>
             </td>
         </tr>
         <?php endforeach; ?>

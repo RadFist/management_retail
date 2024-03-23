@@ -62,10 +62,15 @@ $title = "Supplier";
 
     <script src="script.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#tableformat').DataTable();
+    $(document).ready(function()
+    {
+        $('#tableformat').DataTable({
+            "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
+      ]
         });
-    </script>
+    })
+</script>
 </body>
 
 </html>

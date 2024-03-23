@@ -6,6 +6,8 @@ const liproduk = document.getElementById('li_produk');
 const SubMenu_produk = document.getElementById('SubMenu_produk');
 const SubMenu_StockIn = document.getElementById('SubMenu_stock_in');
 const SubMenu_kategori = document.getElementById('SubMenu_kategori');
+const penjualan = document.getElementById('li_penjualan');
+const record = document.getElementById('li_record');
 
 
 function updateNavClass(activeTabId) {
@@ -17,6 +19,9 @@ function updateNavClass(activeTabId) {
     SubMenu_produk.classList.toggle('active', activeTabId === 'produk');
     SubMenu_StockIn.classList.toggle('active', activeTabId === 'stock_in');
     SubMenu_kategori.classList.toggle('active', activeTabId === 'kategori');
+    penjualan.classList.toggle('active', activeTabId ===  'penjualan');
+    record.classList.toggle('active', activeTabId ===  'record');
+    
 }
 function updateKaryawanClass() {
     
@@ -32,6 +37,10 @@ function updateKaryawanClass() {
         updateNavClass('stock_in');
     } else if (currentPath.includes('kategori.php')) {
         updateNavClass('kategori');
+    } else if (currentPath.includes('penjualan.php')) {
+        updateNavClass('penjualan');
+    } else if (currentPath.includes('record.php')) {
+        updateNavClass('record');
     }
 }
 

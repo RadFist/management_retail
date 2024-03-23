@@ -416,3 +416,5 @@ tbody tr td a {
     background-color: rgba(113, 99, 186, 225) !important;
     border: none  !important;
   }
+
+  th.dt-center, td.dt-center { text-align: center; }

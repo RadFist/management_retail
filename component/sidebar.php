@@ -33,13 +33,13 @@
                     </ul>
                 </li>
                 <li id="li_penjualan">
-                    <a href="supplier.php">
+                    <a href="penjualan.php">
                         <i class="fas fa-tag"></i>
                         <span>penjualan</span>
                     </a>
                 </li>
                 <li id="li_record">
-                    <a href="supplier.php">
+                    <a href="record.php">
                         <i class="fas fa-briefcase"></i>
                         <span>record</span>
                     </a>

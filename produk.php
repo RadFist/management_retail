@@ -64,10 +64,15 @@ $title = "produk";
 
     <!-- table format -->
     <script>
-        $(document).ready(function() {
-            $('#tableformat').DataTable();
+    $(document).ready(function()
+    {
+        $('#tableformat').DataTable({
+            "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
+      ]
         });
-    </script>
+    })
+</script>
 </body>
 
 </html>
