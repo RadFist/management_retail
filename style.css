@@ -235,7 +235,7 @@ body{
 .main--title{
     color: rgba(113, 99, 186, 225);
     padding-bottom: 10px;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .payment--card{
@@ -332,6 +332,18 @@ body{
     text-align: center;
     margin: 10px;
 }
+.header-chart1{
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+}
+.select-chart{
+    border-radius: 7%;
+    padding: 10px;
+    font-size: 17px;
+    font-weight: 700;
+    color: rgba(113, 99, 186, 225); 
+}
 
 .table-container {
     width: 100%; 
@@ -395,6 +407,18 @@ th {
 .button{
     background-color: rgba(113, 99, 186, 225);
     color: #fff;
+}
+.button:hover{
+    background-color: rgb(118, 118, 232);
+}
+.button-rekap{
+    margin-top: 20px;
+    background-color: rgb(24, 96, 56);
+    color: #fff;
+}
+.button-rekap:hover{
+    margin-top: 20px;
+    background-color: rgb(76, 181, 124);
 }
 
 tbody tr td a i{

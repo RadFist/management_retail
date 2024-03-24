@@ -58,6 +58,9 @@ $title = "penjualan";
         <!-- loop end -->
     </tbody>
 </table>
+
+<a href="input_component/input_penjualan.php" class=" button-rekap mb-3 btn "><i class="fas fa-plus-square me-2"></i>Rekap Penjualan</a>
+
 <!-- table end -->
 </div>
 

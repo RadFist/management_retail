@@ -98,8 +98,14 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
 
         <div class="card--chart">
             <div class="chart">
-                <h3 class="main--title">Statistik</h3>
-                <h3 class="main--title right" id="tahun">Tahun</h3>
+                <div class="header-chart1"> 
+                    <h3 class="main--title">Statistik</h3>
+                    <select name="chart_select" class="select-chart" id="chart_select">
+                        <option value="Tahun" selected>Tahun</option>
+                        <option value="Bulan">Bulan</option>
+                        <option value="Minggu">Minggu</option>
+                    </select>
+                </div>
                 <canvas id="lineChart"></canvas>
             </div>
 
