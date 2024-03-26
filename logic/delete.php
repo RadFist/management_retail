@@ -53,6 +53,12 @@ if(isset($_GET['delete_karyawan'])){
     $table = "`tb_kategori`";
     $column = "id_kategori";   
     delete($connect,$table,$column,$id,$location);    
+} else if(isset($_GET['delete_penjualan'])) {
+    $id = $_GET['delete_penjualan'];
+    $location = "../penjualan.php?deleteSuccess";
+    $table = "`tb_penjualan_harian`";
+    $column = "id_penjualan";   
+    delete($connect,$table,$column,$id,$location);    
 } else{
     header("location: ../index.php?deleteError");
 

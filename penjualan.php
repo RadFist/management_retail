@@ -59,9 +59,23 @@ $title = "penjualan";
     </tbody>
 </table>
 
-<a href="input_component/input_penjualan.php" class=" button-rekap mb-3 btn "><i class="fas fa-plus-square me-2"></i>Rekap Penjualan</a>
+<button class=" button-rekap mb-3 btn" onclick="pop_up()"><i class="fas fa-plus-square me-2"></i>Rekap Penjualan</button>
 
 <!-- table end -->
+</div>
+
+<!-- pop up box -->
+<div class="pop-up-container" id="popbox">
+    <button class="x_btn" onclick="close_pop()" type="button">
+        <span class="x"></span>
+        <span class="x"></span>
+    </button>
+    <div class="pop-content">
+        <h4>peringatan!!</h4>
+        <p>data disini akan dipindahkan apa anda yakin?</p>
+        <a href="input_component/input_penjualan.php" class=" button mb-3 btn ">lanjutkan</a>
+      
+    </div>
 </div>
 
 </div>

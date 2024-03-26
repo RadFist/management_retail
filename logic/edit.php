@@ -81,6 +81,20 @@ if(isset($_POST['submit'])){
         } else {
             echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_error($connect);
         }
+    } else if($_POST['submit'] == 'edit_penjualan') {
+        $id = $_POST['id_penjualan'];
+        $produk = $_POST['produk'];
+        $terjual = $_POST['terjual'];
+        $tanggal = $_POST['tanggal'];
+        $query = "UPDATE `tb_penjualan_harian` SET  `id_produk`= '$produk',`penjualan`= '$terjual',`tanggal`= '$tanggal'  WHERE `id_penjualan`='$id'";
+        $sql = mysqli_query($connect, $query);
+
+        if($sql){
+            header("location:../penjualan.php?success");
+            exit();
+        } else {
+            echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_error($connect);
+        }
 
     }
 }

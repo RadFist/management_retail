@@ -8,6 +8,7 @@ const SubMenu_StockIn = document.getElementById('SubMenu_stock_in');
 const SubMenu_kategori = document.getElementById('SubMenu_kategori');
 const penjualan = document.getElementById('li_penjualan');
 const record = document.getElementById('li_record');
+const popbox = document.getElementById('popbox');
 
 
 function updateNavClass(activeTabId) {
@@ -52,3 +53,24 @@ window.addEventListener('popstate', function (event) {
     }
 });
 
+
+function pop_up(){
+    popbox.style.visibility = "visible";
+}
+
+function close_pop(){
+    popbox.style.visibility = "hidden";
+}
+
+function showConfirmationDelete(id_produk) {
+    var popbox = document.getElementById("popbox");
+    popbox.style.visibility = "visible";
+    var continueButton = document.querySelector(".pop-content a.button");
+    continueButton.href = "logic/delete.php?delete_produk=" + id_produk;
+}
+function showConfirmationEdit(id_produk) {
+    var popbox = document.getElementById("popbox");
+    popbox.style.visibility = "visible";
+    var continueButton = document.querySelector(".pop-content a.button");
+    continueButton.href = "input_component/input_produk.php?edit_produk=" + id_produk;
+}

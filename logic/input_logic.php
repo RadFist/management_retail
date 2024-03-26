@@ -149,6 +149,33 @@ if(isset($_POST['submit']))
     }
 
     mysqli_close($connect);
+    }else if($_POST['submit'] == 'simpan_penjualan')
+    {
+    $produk = mysqli_real_escape_string($connect, $_POST['produk']);
+    $penjualan = mysqli_real_escape_string($connect, $_POST['terjual']);
+    $tanggal = mysqli_real_escape_string($connect, $_POST['tanggal']);
+    
+    $query = "INSERT INTO `tb_penjualan_harian`(`id_produk`,`penjualan`,`tanggal`) VALUES (?,?,?)";
+    
+    $stmt = mysqli_prepare($connect, $query);
+    
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, 'iis', $produk,$penjualan,$tanggal);
+        $result = mysqli_stmt_execute($stmt);
+        
+        if($result){
+            header("location:../penjualan.php?success");
+            exit();
+        } else {
+            echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_stmt_error($stmt);
+        }
+        
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "Gagal membuat pernyataan SQL: " . mysqli_error($connect);
+    }
+
+    mysqli_close($connect);
     }else{
         header("location:../index.php?error");
     }
