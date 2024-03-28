@@ -45,10 +45,12 @@ if(isset($_GET['edit_produk'])){
                     <input name="nama_produk" type="text" placeholder="Masukkan nama produk" value="<?= $name ?>" required />
                 </div>
 
+                <?php  if(isset($_GET['edit_produk'])): ?>
                 <div class="input-box">
                     <label>Jumlah produk</label>
                     <input name="jumlah_produk" type="number" placeholder="Masukkan jumlah produk" value="<?= $jumlah ?>" required />
                 </div>
+                <?php endif; ?>
                 
                 <div class="input-box">
                     <label>Kategori Produk</label>

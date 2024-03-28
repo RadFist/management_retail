@@ -4,7 +4,7 @@ include 'function.php';
 
 $data= getDataStockIn($connect);
 
-$title = "Stock in";
+$title = "Stock Masuk";
 ?>
 
 <!DOCTYPE html>

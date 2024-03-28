@@ -62,15 +62,20 @@ function close_pop(){
     popbox.style.visibility = "hidden";
 }
 
-function showConfirmationDelete(id_produk) {
+function showConfirmationDelete(id) {
     var popbox = document.getElementById("popbox");
     popbox.style.visibility = "visible";
     var continueButton = document.querySelector(".pop-content a.button");
-    continueButton.href = "logic/delete.php?delete_produk=" + id_produk;
+    if (currentPath.includes('produk.php')) {
+        continueButton.href = "logic/delete.php?delete_produk=" + id;
+    }else if(currentPath.includes('kategori.php')){
+        continueButton.href = "logic/delete.php?delete_kategori=" + id;
+    }
 }
-function showConfirmationEdit(id_produk) {
+
+function showConfirmationEdit(id) {
     var popbox = document.getElementById("popbox");
     popbox.style.visibility = "visible";
     var continueButton = document.querySelector(".pop-content a.button");
-    continueButton.href = "input_component/input_produk.php?edit_produk=" + id_produk;
+    continueButton.href = "input_component/input_produk.php?edit_produk=" + id;
 }

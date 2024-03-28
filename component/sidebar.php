@@ -27,7 +27,7 @@
                         <i class="fas fa-caret-down"></i>
                     </a>
                     <ul class="p-0">
-                        <li id="SubMenu_stock_in"><a href="stock_in.php"><span>stock in</span></a></li>
+                        <li id="SubMenu_stock_in"><a href="stock_in.php"><span>stock Masuk</span></a></li>
                         <li id="SubMenu_produk"><a href="produk.php"><span>list-produk</span></a></li>
                         <li id="SubMenu_kategori"><a href="kategori.php"><span>kategori</span></a></li>
                     </ul>

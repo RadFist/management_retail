@@ -34,9 +34,10 @@ if(isset($_GET['delete_karyawan'])){
     $column = "id_supplier";  
     delete($connect,$table,$column,$id,$location);    
 }else if(isset($_GET['delete_produk'])){
-    echo "logic belom di buat: jika di delete maka supplier juga harus ke delete";
-    die();
     $id = $_GET['delete_produk'];
+    $query = " DELETE FROM `tb_restok`  WHERE id_produk = $id";
+    $sql = mysqli_query($connect,$query);
+
     $location = "../produk.php?deleteSuccess";
     $table = "`tb_produk`";
     $column = "id_produk";   
@@ -49,6 +50,10 @@ if(isset($_GET['delete_karyawan'])){
     delete($connect,$table,$column,$id,$location);    
 } else if(isset($_GET['delete_kategori'])) {
     $id = $_GET['delete_kategori'];
+    $query = "UPDATE `tb_produk` SET `id_kategori` = null 
+    WHERE `tb_produk`.`id_kategori` = $id";
+    $sql = mysqli_query($connect,$query);
+
     $location = "../kategori.php?deleteSuccess";
     $table = "`tb_kategori`";
     $column = "id_kategori";   
