@@ -2,7 +2,7 @@
 include 'component/connection.php';
 include 'function.php';
 session_start();
-$dataRekap = getRecord($connect);
+$dataRekap = getAllData($connect,"tb_rekap_penjualan");
 $title = "Rekap data penjualan";
 ?>
 
@@ -36,7 +36,8 @@ $title = "Rekap data penjualan";
                     <th scope="col">produk</th>
                     <th scope="col">terjual</th>
                     <th scope="col">Perekap</th>
-                    <th scope="col">tanggal</th>
+                    <th scope="col">tanggal terjual</th>
+                    <th scope="col">tanggal direkap</th>
                     <th scope="col">aksi</th>
                 </tr>
             </thead>
@@ -48,12 +49,13 @@ $title = "Rekap data penjualan";
         <tr>
             <td><?= $tampil['produk']; ?></td>
             <td><?= $tampil['terjual']; ?></td>
-            <td><?= $tampil['karyawan']; ?></td>
+            <td><?= $tampil['nama_perekap']; ?></td>
             <td><?= $tampil['tanggal']; ?></td>
+            <td><?= $tampil['tanggal_rekap']; ?></td>
             <td>
-                <a href="input_component/input_record.php?edit_record=<?= $tampil['id']?>" type="button"><i class="fa fa-pen"></i></a>
+                <a href="input_component/input_record.php?edit_record=<?= $tampil['id_rekap']?>" type="button"><i class="fa fa-pen"></i></a>
                 <!-- delete -->
-                <a href="logic/delete.php?delete_record=<?= $tampil['id'] ?>"><i class="fa fa-trash"></i></a>
+                <a href="logic/delete.php?delete_record=<?= $tampil['id_rekap'] ?>"><i class="fa fa-trash"></i></a>
             </td>
         </tr>
         <?php endforeach; ?>

@@ -13,7 +13,8 @@ if (isset($_POST['login'])=='login'){
     $password = anti_injection($_POST['password']);
     
     
-      $query  = "SELECT * FROM tb_login WHERE username='$username' AND password='$password'";
+      $query  = "SELECT * FROM tb_login l
+      JOIN tb_karyawan k  ON l.id_karyawan = k.id_karyawan WHERE username='$username' AND password='$password'";
       $login  = mysqli_query($connect, $query);
       $user = mysqli_num_rows($login);
       $data     = mysqli_fetch_array($login);
@@ -24,7 +25,8 @@ if (isset($_POST['login'])=='login'){
         $_SESSION['username']    = $data['username'];
         $_SESSION['password']    = $data['password'];
         $_SESSION['level']       = $data['level'];
-        $_SESSION['level']       = $data['id_karyawan'];
+        $_SESSION['level']       = $data['level'];
+        $_SESSION['karyawan']    = $data['Nama'];
           
     
         $sid_lama = session_id();
@@ -65,11 +67,11 @@ if (isset($_POST['login'])=='login'){
             <form action="login.php" method="POST">
                <div class="data">
                   <label>Username</label>
-                  <input name="username" type="text" required>
+                  <input name="username"  id="username" type="text" required>
                </div>
                <div class="data">
                   <label>Password</label>
-                  <input name="password" type="password" required>
+                  <input name="password" id="password" type="password" required onchange="validateInput()">
                </div>
                <div class="btn">
                   <div class="inner"></div>
@@ -82,4 +84,5 @@ if (isset($_POST['login'])=='login'){
          </div>
       </div>
    </body>
+   <script src="script.js"></script>
 </html>
