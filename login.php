@@ -24,6 +24,7 @@ if (isset($_POST['login'])=='login'){
         $_SESSION['username']    = $data['username'];
         $_SESSION['password']    = $data['password'];
         $_SESSION['level']       = $data['level'];
+        $_SESSION['level']       = $data['id_karyawan'];
           
     
         $sid_lama = session_id();
