@@ -85,3 +85,14 @@ function logout(){
         location.href = "logic/logout.php";
     }
 }
+
+// belom kelar men
+function validateInput() {
+    var password = document.getElementById('password');
+    if (password.value.length < 8) {
+        password.focus();
+        alert();
+    }else{
+
+    }
+}

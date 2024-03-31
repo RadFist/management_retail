@@ -4,6 +4,47 @@ include 'function.php';
 session_start();
 $dataPenjualan = getPenjualan($connect);
 $title = "penjualan";
+
+if(isset($_GET['record'])){
+    $nama = $_SESSION['karyawan'];
+    $dt = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
+    $time = $dt->format('Y/m/d');
+
+
+// Query SQL untuk memindahkan data dari tb_penjualan_harian ke tb_rekap_penjualan dengan tambahan informasi
+$sqlMoveData = "INSERT INTO tb_rekap_penjualan (produk, nama_perekap, terjual, tanggal, tanggal_rekap)
+                SELECT p.nama_produk, ?, pe.penjualan, pe.tanggal, ?
+                FROM tb_penjualan_harian pe
+                JOIN tb_produk p ON p.id_produk = pe.id_produk";
+
+// Persiapkan statement
+$stmt = mysqli_prepare($connect, $sqlMoveData);
+if ($stmt) {
+    // Bind parameter
+    mysqli_stmt_bind_param($stmt, 'ss', $nama, $time);
+    
+    // Eksekusi query
+    mysqli_stmt_execute($stmt);
+    
+    // Periksa jika query berhasil dijalankan
+    if(mysqli_stmt_affected_rows($stmt) > 0) {
+        $sqlDeleteData = "DELETE FROM `tb_penjualan_harian`";
+        $sql = mysqli_query($connect,$sqlDeleteData);
+        echo"<script>alert()</script>";
+        header('location:penjualan.php');
+    } else {
+    }
+    // Tutup statement
+    mysqli_stmt_close($stmt);
+} else {
+    echo "Gagal menyiapkan statement: " . mysqli_error($koneksi);
+}
+
+    $connect->close();
+
+}else{
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +116,7 @@ $title = "penjualan";
     <div class="pop-content">
         <h4>peringatan!!</h4>
         <p>data disini akan dipindahkan apa anda yakin?</p>
-        <a href="#" class=" button mb-3 btn ">lanjutkan</a>
+        <a href="penjualan.php?record" class=" button mb-3 btn ">lanjutkan</a>
       
     </div>
 </div>
