@@ -1,7 +1,7 @@
 <?php
 include 'component/connection.php';
 include 'function.php';
-
+session_start();
 $dataPenjualan = getPenjualan($connect);
 $title = "penjualan";
 ?>
@@ -22,15 +22,18 @@ $title = "penjualan";
 </head>
 
 <body>
-<?php include 'component/sidebar.php'; ?>
-
-<div class="main--content">
-    <?php include 'component/header.php'; ?>
+    <?php include 'component/sidebar.php'; ?>
     
-    <div class="card--container">
-        <!-- table start -->
-        <a href="input_component/input_penjualan.php" class=" button mb-3 btn "><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
-        <table id="tableformat" class="table table-striped table-bordered table-hover ">
+    <div class="main--content">
+        <?php include 'component/header.php'; ?>
+        
+        <div class="card--container">
+            <!-- table start -->
+            <div class="btn_penjualan">
+                <a href="input_component/input_penjualan.php" class=" button btn m-3"><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
+                <button class=" button-rekap m-3 me-0 btn" onclick="pop_up()"><i class="fas fa-plus-square me-2"></i>Rekap Penjualan</button>
+            </div>
+            <table id="tableformat" class="table table-striped table-bordered table-hover ">
             <thead>
                 <tr>
                     <th scope="col">produk</th>
@@ -59,7 +62,6 @@ $title = "penjualan";
     </tbody>
 </table>
 
-<button class=" button-rekap mb-3 btn" onclick="pop_up()"><i class="fas fa-plus-square me-2"></i>Rekap Penjualan</button>
 
 <!-- table end -->
 </div>
@@ -73,7 +75,7 @@ $title = "penjualan";
     <div class="pop-content">
         <h4>peringatan!!</h4>
         <p>data disini akan dipindahkan apa anda yakin?</p>
-        <a href="input_component/input_penjualan.php" class=" button mb-3 btn ">lanjutkan</a>
+        <a href="#" class=" button mb-3 btn ">lanjutkan</a>
       
     </div>
 </div>

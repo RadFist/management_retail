@@ -412,7 +412,7 @@ th {
     background-color: rgb(118, 118, 232);
 }
 .button-rekap{
-    margin-top: 20px;
+   
     background-color: rgb(24, 96, 56);
     color: #fff;
 }
@@ -503,4 +503,10 @@ tbody tr td a {
     margin:  15px 0px 35px;
 }
 
+.btn_penjualan{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
 

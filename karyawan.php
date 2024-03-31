@@ -1,7 +1,7 @@
 <?php
 include 'component/connection.php';
 include 'function.php';
-
+session_start();
 $dataKaryawan = getAllData($connect,"tb_karyawan");
 $title = "Karyawan";
 ?>

@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="login.php">
+                    <a href="#">
                         <i class="fas fa-question-circle"></i>
                         <span>Bantuan</span>
                     </a>

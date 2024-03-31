@@ -79,3 +79,9 @@ function showConfirmationEdit(id) {
     var continueButton = document.querySelector(".pop-content a.button");
     continueButton.href = "input_component/input_produk.php?edit_produk=" + id;
 }
+
+function logout(){
+    if(confirm('anda ingin logout?') == true){
+        location.href = "logic/logout.php";
+    }
+}

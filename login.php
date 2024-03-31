@@ -1,9 +1,50 @@
 <?php 
+include "component/connection.php";
 session_start();
 
 if (isset($_POST['login'])=='login'){
-  header('location:index.php');
-};
+ 
+   function anti_injection($data){
+      $filter  = stripslashes(strip_tags(htmlspecialchars($data,ENT_QUOTES)));
+      return $filter;
+    }
+    
+    $username = anti_injection($_POST['username']);
+    $password = anti_injection($_POST['password']);
+    
+    
+      $query  = "SELECT * FROM tb_login WHERE username='$username' AND password='$password'";
+      $login  = mysqli_query($connect, $query);
+      $user = mysqli_num_rows($login);
+      $data     = mysqli_fetch_array($login);
+    
+      if ($user > 0){
+
+        $id = $data['id_login'];
+        $_SESSION['username']    = $data['username'];
+        $_SESSION['password']    = $data['password'];
+        $_SESSION['level']       = $data['level'];
+          
+    
+        $sid_lama = session_id();
+        session_regenerate_id();
+        $sid_baru = session_id();
+
+        //set time login
+        $dt = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
+        $time = $dt->format('Y/m/d H:i:s');
+        $query = "UPDATE `tb_login` SET `waktu` = '$time'  WHERE `tb_login`.`id_login` = $id";
+        $login  = mysqli_query($connect, $query);
+
+        header("location:index.php");
+      }
+      else{
+        echo "<h1>Login Gagal! Username & Password salah.</h1>";
+        echo "<p><a href=\"index.php\">Ulangi Lagi</a></p>";  
+      }
+    
+
+}
 
 ?>
 <!DOCTYPE html>

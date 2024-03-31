@@ -1,7 +1,7 @@
 <?php
 include 'component/connection.php';
 include 'function.php';
-
+session_start();
 $dataSupplier = getAllData($connect, "tb_supplier");
 $title = "Supplier";
 ?>

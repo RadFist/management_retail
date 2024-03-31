@@ -1,7 +1,7 @@
 <?php
 include 'component/connection.php';
 include 'function.php';
-
+session_start();
 $dataRekap = getRecord($connect);
 $title = "Rekap data penjualan";
 ?>
