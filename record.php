@@ -34,6 +34,7 @@ $title = "Rekap data penjualan";
             <thead>
                 <tr>
                     <th scope="col">produk</th>
+                    <th scope="col">harga</th>
                     <th scope="col">terjual</th>
                     <th scope="col">Perekap</th>
                     <th scope="col">tanggal terjual</th>
@@ -48,6 +49,7 @@ $title = "Rekap data penjualan";
             ?>
         <tr>
             <td><?= $tampil['produk']; ?></td>
+            <td><?= $tampil['harga']; ?></td>
             <td><?= $tampil['terjual']; ?></td>
             <td><?= $tampil['nama_perekap']; ?></td>
             <td><?= $tampil['tanggal']; ?></td>

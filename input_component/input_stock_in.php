@@ -10,6 +10,7 @@ $id_produk =  "";
 $id_supplier = "";
 $jumlah = "";
 $tanggal =  "";
+$jumlah_lama = 0;
 
 if(isset($_GET['edit_stock_in'])){
     $id = $_GET['edit_stock_in'];
@@ -18,6 +19,7 @@ if(isset($_GET['edit_stock_in'])){
     $id_supplier =  $data['id_supplier'];
     $jumlah =  $data['jumlah_restok'];
     $tanggal =  $data['tanggal'];
+    $jumlah_lama = $data['jumlah_restok'];
 }
 ?>
 
@@ -40,6 +42,8 @@ if(isset($_GET['edit_stock_in'])){
         <div class="input-box" hidden>
             <label>Id Karyawan</label>
             <input name="id_restok" type="number" placeholder="Masukan id Karyawan" value="<?= $id ?>" />
+            <label>jumlah lama</label>
+            <input name="jumlah_lama" type="number" placeholder="Masukan id Karyawan" value="<?= $jumlah_lama ?>" />
         </div>
 
 

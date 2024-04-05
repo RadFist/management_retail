@@ -47,6 +47,18 @@ if(isset($_GET['delete_karyawan'])){
     $location = "../stock_in.php?deleteSuccess";
     $table = "`tb_restok`";
     $column = "id_restok";   
+
+    $query_select = "SELECT id_produk,jumlah_restok from tb_restok WHERE id_restok = $id";
+    $sql_select = mysqli_query($connect, $query_select);
+    $result = mysqli_fetch_assoc($sql_select);
+    
+    $id_produk = $result['id_produk'];
+    $jumlah = $result['jumlah_restok'];
+    
+    $query_update = "UPDATE tb_produk SET jumlah = `jumlah`- $jumlah WHERE id_produk = $id_produk";
+    $sql_update = mysqli_query($connect, $query_update);
+
+
     delete($connect,$table,$column,$id,$location);    
 } else if(isset($_GET['delete_kategori'])) {
     $id = $_GET['delete_kategori'];
@@ -63,7 +75,25 @@ if(isset($_GET['delete_karyawan'])){
     $location = "../penjualan.php?deleteSuccess";
     $table = "`tb_penjualan_harian`";
     $column = "id_penjualan";   
+
+    $query_select = "SELECT id_produk,penjualan from tb_penjualan_harian WHERE id_penjualan = $id";
+    $sql_select = mysqli_query($connect, $query_select);
+    $result = mysqli_fetch_assoc($sql_select);
+    
+    $id_produk = $result['id_produk'];
+    $jumlah = $result['penjualan'];
+    
+    $query_update = "UPDATE tb_produk SET jumlah = `jumlah`+ $jumlah WHERE id_produk = $id_produk";
+    $sql_update = mysqli_query($connect, $query_update);
+
+
     delete($connect,$table,$column,$id,$location);    
+} else if(isset($_GET['delete_record'])) {
+    $id = $_GET['delete_record'];
+    $location = "../record.php?deleteSuccess";
+    $table = "`tb_rekap_penjualan`";
+    $column = "id_rekap";
+    delete($connect,$table,$column,$id,$location);   
 } else{
     header("location: ../index.php?deleteError");
 

@@ -1,6 +1,5 @@
 <?php
 
-
 function getTotalCount($connect, $table, $column) {
     $query = "SELECT COUNT($column) as total FROM $table";
     $sql = mysqli_query($connect, $query);
@@ -23,7 +22,7 @@ function getTotalCount($connect, $table, $column) {
 
  function getproductData($connect){
     $query = "SELECT  p.*,
-    COALESCE(SUM(r.jumlah_restok)+p.jumlah, p.jumlah) AS total_stock,
+    p.jumlah AS total_stock,
     k.kategori as kategori
     FROM tb_produk p
     LEFT JOIN tb_restok r ON r.id_produk = p.id_produk
@@ -82,9 +81,8 @@ function getAllKategori($connect){
 }
 
 function total_laba_kotor($connect){
-    $query = "SELECT SUM(COALESCE((r.jumlah_restok + p.jumlah), p.jumlah) * p.harga) AS total
-    FROM tb_produk p
-    LEFT JOIN tb_restok r ON r.id_produk = p.id_produk;";
+    $query = "SELECT SUM(jumlah*harga) AS total
+    FROM tb_produk ";
     $sql = mysqli_query($connect, $query);
     $result = mysqli_fetch_assoc($sql);
     return $result['total'];
@@ -116,6 +114,7 @@ function getPenjualan($connect){
     $query = "SELECT  j.id_penjualan as id,
     j.id_produk as id_produk,
     p.nama_produk AS produk,
+    p.harga as harga,
     j.penjualan as terjual,
     j.tanggal AS tanggal
 FROM tb_penjualan_harian j

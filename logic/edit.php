@@ -59,12 +59,20 @@ if(isset($_POST['submit'])){
         $supplier = $_POST['supplier'];
         $jumlah_produk = $_POST['jumlah_produk'];
         $tanggal = $_POST['tanggal'];
+        $jumlah_lama = $_POST['jumlah_lama'];
+
 
         $query = "UPDATE `tb_restok` SET `id_produk`=$produk  ,`id_supplier`= $supplier,`jumlah_restok`=$jumlah_produk, `tanggal`= '$tanggal'  WHERE `id_restok`='$id'";
         $sql = mysqli_query($connect, $query);
-
+        
         if($sql){
-            header("location:../stock_in.php?success");
+            //melakukan perubahan jumlah pada table produk 
+            $query = "UPDATE `tb_produk` SET `jumlah` = `jumlah` - $jumlah_lama + $jumlah_produk  WHERE `id_produk`='$produk'";
+            $sql = mysqli_query($connect, $query);  
+            
+            if($sql){
+                header("location:../stock_in.php?success");
+            }
             exit();
         } else {
             echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_error($connect);
@@ -85,13 +93,36 @@ if(isset($_POST['submit'])){
         $id = $_POST['id_penjualan'];
         $produk = $_POST['produk'];
         $terjual = $_POST['terjual'];
+        $jumlah_lama = $_POST['jumlah_lama'];
         $tanggal = $_POST['tanggal'];
         $query = "UPDATE `tb_penjualan_harian` SET  `id_produk`= '$produk',`penjualan`= '$terjual',`tanggal`= '$tanggal'  WHERE `id_penjualan`='$id'";
         $sql = mysqli_query($connect, $query);
 
         if($sql){
-            header("location:../penjualan.php?success");
+            $query = "UPDATE `tb_produk` SET `jumlah` = `jumlah` + $jumlah_lama -$terjual  WHERE `id_produk`='$produk'";
+            $sql_produk = mysqli_query($connect, $query);  
+            if($sql_produk){
+                header("location:../penjualan.php?success");
+                exit();
+            }
+        } else {
+            echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_error($connect);
+        }
+    } else if($_POST['submit'] == 'edit_record') {
+        $id = $_POST['id'];
+        $produk = $_POST['produk'];
+        $harga = $_POST['harga'];
+        $terjual = $_POST['terjual'];
+        $tanggal = $_POST['tanggal'];
+        $tanggal_rekap = $_POST['tanggal_rekap'];
+        
+        $query = "UPDATE `tb_rekap_penjualan` SET  `produk`= '$produk',`harga`= '$harga',`terjual`= '$terjual',`tanggal`= '$tanggal',`tanggal_rekap`= '$tanggal_rekap' WHERE `id_rekap`='$id'";
+        $sql = mysqli_query($connect, $query);
+
+        if($sql){
+            header("location:../record.php?success");
             exit();
+            
         } else {
             echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_error($connect);
         }

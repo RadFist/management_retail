@@ -95,7 +95,9 @@ if(isset($_POST['submit']))
     }
 
     mysqli_close($connect);
-    }else if($_POST['submit'] == 'simpan_stock_in')
+    
+
+    }else if($_POST['submit'] == 'simpan_stock_in') // simpan data stock
     {
     $produk = mysqli_real_escape_string($connect, $_POST['produk']);
     $supplier = mysqli_real_escape_string($connect, $_POST['supplier']);
@@ -111,8 +113,13 @@ if(isset($_POST['submit']))
         $result = mysqli_stmt_execute($stmt);
         
         if($result){
-            header("location:../stock_in.php?success");
-            exit();
+            //melakukan simpan jumlah ke table produk
+            $query = "UPDATE `tb_produk` SET `jumlah` = `jumlah` + $jumlah  WHERE id_produk = $produk";
+            $sql = mysqli_query($connect,$query);
+            if($sql){
+                header("location:../stock_in.php?success");
+                exit();
+            }
         } else {
             echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_stmt_error($stmt);
         }
@@ -149,7 +156,7 @@ if(isset($_POST['submit']))
     }
 
     mysqli_close($connect);
-    }else if($_POST['submit'] == 'simpan_penjualan')
+    }else if($_POST['submit'] == 'simpan_penjualan') //simpan data penjualan
     {
     $produk = mysqli_real_escape_string($connect, $_POST['produk']);
     $penjualan = mysqli_real_escape_string($connect, $_POST['terjual']);
@@ -164,8 +171,13 @@ if(isset($_POST['submit']))
         $result = mysqli_stmt_execute($stmt);
         
         if($result){
-            header("location:../penjualan.php?success");
-            exit();
+              //melakukan simpan jumlah ke table produk
+              $query = "UPDATE `tb_produk` SET `jumlah` = `jumlah` - $penjualan  WHERE id_produk = $produk";
+              $sql = mysqli_query($connect,$query);
+              if($sql){
+                  header("location:../penjualan.php?success");
+                  exit();
+                }
         } else {
             echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_stmt_error($stmt);
         }
@@ -176,6 +188,9 @@ if(isset($_POST['submit']))
     }
 
     mysqli_close($connect);
+    }else if($_POST['submit'] == 'simpan_record') //simpan data penjualan
+    {
+        die();
     }else{
         header("location:../index.php?error");
     }

@@ -510,3 +510,8 @@ tbody tr td a {
     justify-content: space-between;
 }
 
+.pendapatan{
+    display: flex;
+    margin-top: 15px;
+    font-size: large;
+}

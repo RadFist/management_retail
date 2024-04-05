@@ -1,11 +1,44 @@
 <?php 
-$data = [450, 200, 300, 250, 150, 350];
+function arr($sql){
+    $result = array();
+    while ($row = mysqli_fetch_assoc($sql)) {
+        $result[] = $row;
+    }
+    return $result;
+}
+
+$query_tahun = "SELECT DATE_FORMAT(tanggal, '%Y-%m') AS bulan,LEFT(MONTHNAME(tanggal), 3) AS nama_bulan, SUM(terjual*harga) AS pendapatan
+FROM tb_rekap_penjualan
+WHERE tanggal >= DATE_SUB(NOW(), INTERVAL 1 YEAR)
+GROUP BY bulan
+ORDER BY bulan ASC";
+
+$query_minggu="SELECT DATE_FORMAT(tanggal, '%Y-%m-%d') AS bulan,
+SUM(terjual * harga) AS pendapatan
+FROM tb_rekap_penjualan
+WHERE WEEK(tanggal) = WEEK(NOW())
+GROUP BY bulan;";
+
+$sql_tahun = mysqli_query($connect,$query_tahun);
+$sql_minggu = mysqli_query($connect,$query_minggu);
+
+$result_tahun = arr($sql_tahun);
+$result_minggu = arr($sql_minggu);
+
+
+$data_tahun = array_column($result_tahun, 'pendapatan');
+$label_tahun = array_column($result_tahun, 'nama_bulan');   
+
+$data_minggu = array_column($result_minggu, 'pendapatan');
+$label_minggu = array_column($result_minggu, 'bulan');   
+
+
 ?>
 
 <script>
 const selectElement = document.getElementById('chart_select');
-let labels = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-const data = <?php echo json_encode($data); ?>; // Mengambil data dari PHP dan menyimpannya ke dalam variabel JavaScript
+let labels =<?php echo json_encode($label_tahun); ?>;
+let data = <?php echo json_encode($data_tahun); ?>; // Mengambil data dari PHP dan menyimpannya ke dalam variabel JavaScript
 
 // Mendefinisikan grafik
 var ctx = document.getElementById('lineChart').getContext('2d');
@@ -49,16 +82,18 @@ selectElement.addEventListener('change', function() {
     var selectedValue = selectElement.value;
 
     if (selectedValue === "Tahun") {
-        labels = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+        labels =<?php echo json_encode($label_tahun); ?>;
+        data  = <?php echo json_encode($data_tahun); ?>;
     } else if (selectedValue === "Bulan") {
         labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4']; // Atur label untuk bulan sesuai kebutuhan
     } else if (selectedValue === "Minggu") {
-        labels = ['Hari 1', 'Hari 2', 'Hari 3', 'Hari 4', 'Hari 5', 'Hari 6', 'Hari 7']; // Atur label untuk minggu sesuai kebutuhan
-    }
+        labels =<?php echo json_encode($label_minggu); ?>;
+        data  = <?php echo json_encode($data_minggu); ?>;
+      }
 
     myChart.data.labels = labels;
     // ganti data
-    // myChart.data.datasets[0].data  = [2,2,2,2,2,2]
+    myChart.data.datasets[0].data  = data;
     myChart.update();
 
 });

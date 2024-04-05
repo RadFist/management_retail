@@ -5,6 +5,15 @@ session_start();
 $dataPenjualan = getPenjualan($connect);
 $title = "penjualan";
 
+$query = "SELECT SUM(ph.penjualan*harga) as total
+FROM `tb_penjualan_harian` ph 
+JOIN tb_produk pr ON pr.id_produk = ph.id_produk ";
+$sql = mysqli_query($connect, $query);
+$result = mysqli_fetch_assoc($sql);
+
+$total = $result['total'];
+
+
 if(isset($_GET['record'])){
     $nama = $_SESSION['karyawan'];
     $dt = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
@@ -12,8 +21,8 @@ if(isset($_GET['record'])){
 
 
 // Query SQL untuk memindahkan data dari tb_penjualan_harian ke tb_rekap_penjualan dengan tambahan informasi
-$sqlMoveData = "INSERT INTO tb_rekap_penjualan (produk, nama_perekap, terjual, tanggal, tanggal_rekap)
-                SELECT p.nama_produk, ?, pe.penjualan, pe.tanggal, ?
+$sqlMoveData = "INSERT INTO tb_rekap_penjualan (produk, harga, nama_perekap, terjual, tanggal, tanggal_rekap)
+                SELECT p.nama_produk,p.harga,?, pe.penjualan, pe.tanggal, ?
                 FROM tb_penjualan_harian pe
                 JOIN tb_produk p ON p.id_produk = pe.id_produk";
 
@@ -78,6 +87,7 @@ if ($stmt) {
             <thead>
                 <tr>
                     <th scope="col">produk</th>
+                    <th scope="col">harga</th>
                     <th scope="col">terjual</th>
                     <th scope="col">tanggal</th>
                     <th scope="col">aksi</th>
@@ -90,6 +100,7 @@ if ($stmt) {
             ?>
         <tr>
             <td><?= $tampil['produk']; ?></td>
+            <td><?= $tampil['harga']; ?></td>
             <td><?= $tampil['terjual']; ?></td>
             <td><?= $tampil['tanggal']; ?></td>
             <td>
@@ -105,8 +116,12 @@ if ($stmt) {
 
 
 <!-- table end -->
-</div>
 
+    <div class="pendapatan">
+        <p class="me-1">TOTAL PENDAPATAN :</p> 
+        <p><?php echo $total; ?></p>
+    </div>
+</div>
 <!-- pop up box -->
 <div class="pop-up-container" id="popbox">
     <button class="x_btn" onclick="close_pop()" type="button">

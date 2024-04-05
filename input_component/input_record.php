@@ -6,19 +6,20 @@ $data_supplier = getAllSupplier($connect);
 $data_produk = getAllProduct($connect);
 
 $id ="";
-$id_produk =  "";
-$id_supplier = "";
-$jumlah = "";
-$jumlah_lama = 0;
+$produk =  "";
+$harga = "";
+$terjual = "";
 $tanggal =  "";
+$tanggal_rekap = 0;
 
-if(isset($_GET['edit_penjualan'])){
-    $id = $_GET['edit_penjualan'];
-    $data = getAllDatabyid($connect,"tb_penjualan_harian","id_penjualan",$id);
-    $id_produk =  $data['id_produk'];
-    $jumlah =  $data['penjualan'];
-    $jumlah_lama =  $data['penjualan'];
+if(isset($_GET['edit_record'])){
+    $id = $_GET['edit_record'];
+    $data = getAllDatabyid($connect,"tb_rekap_penjualan","id_rekap",$id);
+    $produk =  $data['produk'];
+    $harga =  $data['harga'];
+    $terjual =  $data['terjual'];
     $tanggal =  $data['tanggal'];
+    $tanggal_rekap = $data['tanggal_rekap'];
 }
 ?>
 
@@ -35,39 +36,41 @@ if(isset($_GET['edit_penjualan'])){
   </head>
   <body>
     <section class="container">
-      <header>Input data penjualan</header>
-      <form action="../logic/<?= isset($_GET['edit_penjualan']) ? 'edit' : 'input_logic' ?>.php" method="POST" class="form">
+
+      <header>Edit Rekap</header>
+      <form action="../logic/<?= isset($_GET['edit_record']) ? 'edit' : 'input_logic' ?>.php" method="POST" class="form">
 
         <div class="input-box" hidden>
             <label>Id Karyawan</label>
-            <input name="id_penjualan" type="number" placeholder="Masukan id Karyawan" value="<?= $id ?>" />
-            <input name="jumlah_lama" type="number" placeholder="Masukan id Karyawan" value="<?= $jumlah_lama ?>" />
+            <input name="id" type="number" placeholder="Masukan id Karyawan" value="<?= $id ?>" />
         </div>
 
 
-        <div class="input-box">
-          <label>produk</label>
-          <div class="search_select_box">
-            <select  name="produk" class="w-100" data-live-search="true">
-                 <?php foreach ($data_produk as $tampil) : ?>
-                    <option value="<?php echo $tampil['id_produk']; ?>" <?php echo ($tampil['id_produk'] == $id_produk) ? 'selected' : ''; ?>><?php echo $tampil['nama_produk']; ?></option>
-                  <?php endforeach ?>
-            </select>
-          </div>
-        </div>
 
-        <div class="column">
           <div class="input-box">
-                <label>Terjual</label>
-                <input name="terjual" type="number" placeholder="Masukkan jumlah produk" value="<?= $jumlah ?>" required />
+                <label>produk</label>
+                <input name="produk" type="text" placeholder="Masukkan nama" value="<?= $produk ?>" required />
             </div>
 
           <div class="input-box">
-            <label>Tanggal</label>
-            <input name="tanggal" type="date" placeholder="Masukkan tanggal lahir" value="<?= $tanggal ?>" required />
+                <label>harga</label>
+                <input name="harga" type="number" placeholder="Masukkan harga produk" value="<?= $harga ?>" required />
+            </div>
+          <div class="input-box">
+                <label>terjual</label>
+                <input name="terjual" type="number" placeholder="Masukkan jumlah terjual" value="<?= $terjual ?>" required />
+            </div>
+          <div class="input-box">
+                <label>tanggal</label>
+                <input name="tanggal" type="date" placeholder="Masukkan jumlah produk" value="<?= $tanggal ?>" required />
+            </div>
+
+          <div class="input-box">
+            <label>Tanggal rekap</label>
+            <input name="tanggal_rekap" type="date" placeholder="Masukkan tanggal lahir" value="<?= $tanggal_rekap ?>" required />
           </div>
        
-        <button type="submit" name="submit" value="<?= isset($_GET['edit_penjualan']) ? 'edit_penjualan' : 'simpan_penjualan' ?>">Submit</button>
+        <button type="submit" name="submit" value="<?= isset($_GET['edit_record']) ? 'edit_record' : 'simpan_record' ?>">Submit</button>
       </form>
     </section>
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
