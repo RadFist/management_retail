@@ -190,7 +190,34 @@ if(isset($_POST['submit']))
     mysqli_close($connect);
     }else if($_POST['submit'] == 'simpan_record') //simpan data penjualan
     {
-        die();
+    $produk = mysqli_real_escape_string($connect, $_POST['produk']);
+    $harga = mysqli_real_escape_string($connect, $_POST['harga']);
+    $terjual = mysqli_real_escape_string($connect, $_POST['terjual']);
+    $perekap = mysqli_real_escape_string($connect, $_POST['perekap']);
+    $tanggal = mysqli_real_escape_string($connect, $_POST['tanggal']);
+    $tanggal_rekap = mysqli_real_escape_string($connect, $_POST['tanggal_rekap']);
+    
+    $query = "INSERT INTO `tb_rekap_penjualan`(`produk`,`harga`,`nama_perekap`,`terjual`,`tanggal`,`tanggal_rekap`) VALUES (?,?,?,?,?,?)";
+    
+    $stmt = mysqli_prepare($connect, $query);
+    
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, 'sisiss', $produk,$harga,$perekap,$terjual,$tanggal,$tanggal_rekap);
+        $result = mysqli_stmt_execute($stmt);
+        
+        if($result){
+            header("location:../recordAdmin.php?success");
+            exit();
+                } else {
+            echo "Gagal mengeksekusi pernyataan SQL: " . mysqli_stmt_error($stmt);
+        }
+        
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "Gagal membuat pernyataan SQL: " . mysqli_error($connect);
+    }
+
+    mysqli_close($connect);
     }else{
         header("location:../index.php?error");
     }

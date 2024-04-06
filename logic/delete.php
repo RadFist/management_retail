@@ -90,7 +90,7 @@ if(isset($_GET['delete_karyawan'])){
     delete($connect,$table,$column,$id,$location);    
 } else if(isset($_GET['delete_record'])) {
     $id = $_GET['delete_record'];
-    $location = "../record.php?deleteSuccess";
+    $location = "../recordAdmin.php?deleteSuccess";
     $table = "`tb_rekap_penjualan`";
     $column = "id_rekap";
     delete($connect,$table,$column,$id,$location);   

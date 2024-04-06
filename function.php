@@ -7,6 +7,23 @@ function getTotalCount($connect, $table, $column) {
 
     return $result['total'];
 }
+function produkTerlaris($connect){
+    $query = "SELECT produk, SUM(terjual) AS total_terjual , harga
+    FROM tb_rekap_penjualan
+    GROUP BY produk
+    ORDER BY total_terjual DESC
+    LIMIT 5;    
+    ";
+    $sql = mysqli_query($connect,$query);
+    $result = array();
+    
+    while ($row = mysqli_fetch_assoc($sql)) {
+        $result[] = $row;
+    }
+    
+    return $result;
+
+}
 
  function getAllData($connect,$table){
     $query = "SELECT * FROM $table";

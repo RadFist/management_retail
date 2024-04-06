@@ -40,7 +40,7 @@ function updateKaryawanClass() {
         updateNavClass('kategori');
     } else if (currentPath.includes('penjualan.php')) {
         updateNavClass('penjualan');
-    } else if (currentPath.includes('record.php')) {
+    } else if (currentPath.includes('record.php')||currentPath.includes('recordAdmin.php')) {
         updateNavClass('record');
     }
 }

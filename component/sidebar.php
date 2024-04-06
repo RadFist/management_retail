@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li id="li_record">
-                    <a href="record.php">
+                    <a href="<?= $_SESSION['level'] ==='admin' ? 'recordAdmin.php' : 'record.php'; ?>">
                         <i class="fas fa-briefcase"></i>
                         <span>record</span>
                     </a>

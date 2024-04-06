@@ -3,14 +3,7 @@ include 'component/connection.php';
 include 'function.php';
 session_start();
 $total = total_laba_kotor($connect);
-
-
-
 $title = "Dashboard";
-
-$berubah = "berubah lagi men";
-
-
 
 //product total count database
 $produk_total = getTotalCount($connect, 'tb_produk', 'id_produk');
@@ -18,8 +11,8 @@ $produk_total = getTotalCount($connect, 'tb_produk', 'id_produk');
 $supplier_total = getTotalCount($connect, 'tb_supplier', 'id_supplier');
 //karyawan total count database
 $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
-
-
+$DataProduk = produkTerlaris($connect); //data terlaris
+$no = 1;
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +103,7 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
             </div>
 
             <div class="chart2">
-                <h3 class="main--title">Rekomended</h3>
+                <h3 class="main--title">Terlaris</h3>
                 <div class="table-container">
                     <table>
                         <thead>
@@ -122,25 +115,14 @@ $karyawan_total = getTotalCount($connect, 'tb_karyawan', 'id_karyawan');
                             </tr>
                         </thead>
                         <tbody>
+                        <?php foreach ($DataProduk as $tampil): ?>
                             <tr>
-                                <td>1</td>
-                                <td>kaca spion</td>
-                                <td>100</td>
-                                <td>10.000</td>
+                                <td><?= $no++; ?></td>
+                                <td><?= $tampil['produk']; ?></td>
+                                <td><?= $tampil['total_terjual']; ?></td>
+                                <td><?= $tampil['harga']; ?></td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>indomie</td>
-                                <td>20</td>
-                                <td>20.000</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>celana dalam</td>
-                                <td>18</td>
-                                <td>30.000</td>
-                            </tr>
-
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

@@ -11,8 +11,6 @@ if (isset($_POST['login'])=='login'){
     
     $username = anti_injection($_POST['username']);
     $password = anti_injection($_POST['password']);
-    
-    
       $query  = "SELECT * FROM tb_login l
       JOIN tb_karyawan k  ON l.id_karyawan = k.id_karyawan WHERE username='$username' AND password='$password'";
       $login  = mysqli_query($connect, $query);
@@ -20,11 +18,10 @@ if (isset($_POST['login'])=='login'){
       $data     = mysqli_fetch_array($login);
     
       if ($user > 0){
-
+       
         $id = $data['id_login'];
         $_SESSION['username']    = $data['username'];
         $_SESSION['password']    = $data['password'];
-        $_SESSION['level']       = $data['level'];
         $_SESSION['level']       = $data['level'];
         $_SESSION['karyawan']    = $data['Nama'];
           

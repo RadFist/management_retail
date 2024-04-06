@@ -120,7 +120,7 @@ if(isset($_POST['submit'])){
         $sql = mysqli_query($connect, $query);
 
         if($sql){
-            header("location:../record.php?success");
+            header("location:../recordAdmin.php?success");
             exit();
             
         } else {

@@ -37,7 +37,7 @@ if(isset($_GET['edit_record'])){
   <body>
     <section class="container">
 
-      <header>Edit Rekap</header>
+      <header>input Rekap</header>
       <form action="../logic/<?= isset($_GET['edit_record']) ? 'edit' : 'input_logic' ?>.php" method="POST" class="form">
 
         <div class="input-box" hidden>
@@ -59,6 +59,10 @@ if(isset($_GET['edit_record'])){
           <div class="input-box">
                 <label>terjual</label>
                 <input name="terjual" type="number" placeholder="Masukkan jumlah terjual" value="<?= $terjual ?>" required />
+            </div>
+          <div class="input-box">
+                <label>perekap</label>
+                <input name="perekap" type="text" placeholder="Masukkan jumlah terjual"  required />
             </div>
           <div class="input-box">
                 <label>tanggal</label>
