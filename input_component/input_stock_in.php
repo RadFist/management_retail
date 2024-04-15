@@ -72,7 +72,7 @@ if(isset($_GET['edit_stock_in'])){
 
           <div class="input-box">
                 <label>jumlah restock produk</label>
-                <input name="jumlah_produk" type="number" placeholder="Masukkan jumlah produk" value="<?= $jumlah ?>" required />
+                <input name="jumlah_produk" type="number" placeholder="Masukkan jumlah produk" value="<?= $jumlah ?>" required  min="0" />
             </div>
 
           <div class="input-box">

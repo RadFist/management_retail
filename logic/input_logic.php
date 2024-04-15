@@ -161,7 +161,20 @@ if(isset($_POST['submit']))
     $produk = mysqli_real_escape_string($connect, $_POST['produk']);
     $penjualan = mysqli_real_escape_string($connect, $_POST['terjual']);
     $tanggal = mysqli_real_escape_string($connect, $_POST['tanggal']);
-    
+
+    //mengambil data produk
+    $query_produk = "SELECT  `jumlah` FROM `tb_produk` WHERE id_produk = $produk";
+    $sql = mysqli_query($connect,$query_produk);
+    $data =mysqli_fetch_assoc($sql);
+
+    //cek apakah stock produk cukup
+    if($penjualan>$data['jumlah']){
+        session_start(); 
+        $_SESSION['error_message'] = 'stock tidak cukup';
+        header("location: ../input_component/input_penjualan.php");
+        die();
+    }
+
     $query = "INSERT INTO `tb_penjualan_harian`(`id_produk`,`penjualan`,`tanggal`) VALUES (?,?,?)";
     
     $stmt = mysqli_prepare($connect, $query);

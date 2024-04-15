@@ -22,21 +22,36 @@ function delete($connect,$table,$id_name,$id,$location){
 }
 
 if(isset($_GET['delete_karyawan'])){
+    session_start();
     $id = $_GET['delete_karyawan'];
+
+    if($id == $_SESSION['id_karyawan']){
+        header("location: ../karyawan.php?error");
+        die();
+    }
+    $query = " DELETE FROM `tb_login` WHERE id_karyawan = $id";
+    $sql = mysqli_query($connect,$query);
+
     $location = "../karyawan.php?deleteSuccess";
     $table = "`tb_karyawan`";
     $column = "id_karyawan";
     delete($connect,$table,$column,$id,$location);    
 }else if(isset($_GET['delete_supplier'])){
     $id = $_GET['delete_supplier'];
+
+    $query = " UPDATE `tb_restok` SET `id_supplier` = null  WHERE id_supplier = $id";
+    $sql = mysqli_query($connect,$query);
+
     $location = "../supplier.php?deleteSuccess";
     $table = "`tb_supplier`";
     $column = "id_supplier";  
     delete($connect,$table,$column,$id,$location);    
 }else if(isset($_GET['delete_produk'])){
     $id = $_GET['delete_produk'];
-    $query = " DELETE FROM `tb_restok`  WHERE id_produk = $id";
-    $sql = mysqli_query($connect,$query);
+    $query_restock = " DELETE FROM `tb_restok`  WHERE id_produk = $id";
+    $sql_restock = mysqli_query($connect,$query_restock);
+    $query_penjualan = "DELETE FROM `tb_penjualan_harian` WHERE id_produk = $id";
+    $sql_penjualan = mysqli_query($connect,$query_penjualan);
 
     $location = "../produk.php?deleteSuccess";
     $table = "`tb_produk`";
@@ -85,8 +100,8 @@ if(isset($_GET['delete_karyawan'])){
     
     $query_update = "UPDATE tb_produk SET jumlah = `jumlah`+ $jumlah WHERE id_produk = $id_produk";
     $sql_update = mysqli_query($connect, $query_update);
-
-
+    
+    
     delete($connect,$table,$column,$id,$location);    
 } else if(isset($_GET['delete_record'])) {
     $id = $_GET['delete_record'];
@@ -94,9 +109,12 @@ if(isset($_GET['delete_karyawan'])){
     $table = "`tb_rekap_penjualan`";
     $column = "id_rekap";
     delete($connect,$table,$column,$id,$location);   
+} else if (isset($_POST['delete_all'])) {
+    $query_delete = "DELETE FROM `tb_restok` WHERE 1";
+    $sql_delete = mysqli_query($connect, $query_delete);
+    header("location: ../stock_in.php");
 } else{
     header("location: ../index.php?deleteError");
-
 }
 
 ?>

@@ -22,14 +22,16 @@ $title = "Karyawan";
 </head>
 
 <body>
-<?php include 'component/sidebar.php'; ?>
-
-<div class="main--content">
-    <?php include 'component/header.php'; ?>
+    <?php include 'component/sidebar.php'; ?>
     
-    <div class="card--container">
-        <!-- table start -->
-        <a href="input_component/input_karyawan.php" class=" button mb-3 btn "><i class="fas fa-plus-square me-2"></i>Tambah Data</a>
+    <div class="main--content">
+        <?php include 'component/header.php'; ?>
+        
+        <div class="card--container">
+            <!-- table start -->
+        <?php if( $_SESSION['level'] ==='admin') : ?>
+             <a href="input_component/input_karyawan.php" class=" button mb-3 btn "><i class="fas fa-plus-square me-2"></i>Tambah Data</a>        
+        <?php endif; ?>
         <table id="tableformat" class="table table-striped table-bordered table-hover ">
             <thead>
                 <tr>
@@ -38,7 +40,9 @@ $title = "Karyawan";
                     <th scope="col">No Telp</th>
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">tanggal lahir</th>
-                    <th scope="col">Aksi</th>
+                    <?php if( $_SESSION['level'] ==='admin') : ?>
+                        <th scope="col">Aksi</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -52,12 +56,14 @@ $title = "Karyawan";
             <td><?= $tampil['np']; ?></td>
             <td><?= $tampil['jenis_kelamin']; ?></td>
             <td><?= $tampil['tanggal_lahir']; ?></td>
-            <td>
-                <a href="input_component/input_karyawan.php?edit_karyawan=<?= $tampil['id_karyawan']?>" type="button"><i class="fa fa-pen"></i></a>
-                <!-- delete -->
-                <a href="logic/delete.php?delete_karyawan=<?= $tampil['id_karyawan'] ?>"><i class="fa fa-trash"></i></a>
-            </td>
-        </tr>
+            <?php if( $_SESSION['level'] ==='admin') : ?>
+                <td>
+                    <a onclick="showConfirmationEdit(<?= $tampil['id_karyawan']?>)"  type="button"><i class="fa fa-pen"></i></a>
+                    <!-- delete -->
+                    <a onclick="showConfirmationDelete(<?= $tampil['id_karyawan'] ?>)"><i class="fa fa-trash"></i></a>
+                </td>
+            <?php endif; ?>
+            </tr>
         <?php endforeach; ?>
         <!-- loop end -->
     </tbody>
@@ -65,6 +71,18 @@ $title = "Karyawan";
 <!-- table end -->
 </div>
 
+ <!-- pop up box -->
+ <div class="pop-up-container" id="popbox">
+    <button class="x_btn" onclick="close_pop()" type="button">
+        <span class="x"></span>
+        <span class="x"></span>
+    </button>
+    <div class="pop-content">
+        <h4>peringatan!!</h4>
+        <p>Data sangat sangat sensitif mengubah/ menghapus ini akan berdampak pada akun!!</p>
+        <a  class=" button mb-3 btn ">lanjutkan</a>
+    </div>
+</div>
 </div>
 
 <script src="script.js"></script>

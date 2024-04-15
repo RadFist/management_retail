@@ -408,6 +408,10 @@ th {
     background-color: rgba(113, 99, 186, 225);
     color: #fff;
 }
+.button-danger{
+    background-color: rgb(212, 53, 53);
+    color: #fff;
+}
 .button:hover{
     background-color: rgb(118, 118, 232);
 }

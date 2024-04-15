@@ -95,6 +95,21 @@ if(isset($_POST['submit'])){
         $terjual = $_POST['terjual'];
         $jumlah_lama = $_POST['jumlah_lama'];
         $tanggal = $_POST['tanggal'];
+
+
+         //mengambil data produk
+        $query_produk = "SELECT  `jumlah` FROM `tb_produk` WHERE id_produk = $produk";
+        $sql = mysqli_query($connect,$query_produk);
+        $data =mysqli_fetch_assoc($sql);
+
+        //cek apakah stock produk cukup
+        if($terjual>$data['jumlah']){
+            session_start(); 
+            $_SESSION['error_message'] = 'stock tidak cukup';
+            header("location: ../input_component/input_penjualan.php?edit_penjualan=$id");
+            die();
+        }
+
         $query = "UPDATE `tb_penjualan_harian` SET  `id_produk`= '$produk',`penjualan`= '$terjual',`tanggal`= '$tanggal'  WHERE `id_penjualan`='$id'";
         $sql = mysqli_query($connect, $query);
 

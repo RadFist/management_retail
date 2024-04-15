@@ -1,7 +1,7 @@
 <?php
 include "../component/connection.php";
 include "../function.php";
-
+session_start();
 $data_supplier = getAllSupplier($connect);
 $data_produk = getAllProduct($connect);
 
@@ -20,6 +20,12 @@ if(isset($_GET['edit_penjualan'])){
     $jumlah_lama =  $data['penjualan'];
     $tanggal =  $data['tanggal'];
 }
+
+if (isset($_SESSION['error_message'])) {
+  echo "<script>alert('" . $_SESSION['error_message'] . "');</script>";
+  unset($_SESSION['error_message']); // Hapus pesan dari sesi setelah ditampilkan
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +65,7 @@ if(isset($_GET['edit_penjualan'])){
         <div class="column">
           <div class="input-box">
                 <label>Terjual</label>
-                <input name="terjual" type="number" placeholder="Masukkan jumlah produk" value="<?= $jumlah ?>" required />
+                <input name="terjual" type="number" placeholder="Masukkan jumlah produk" value="<?= $jumlah ?>" required  min="0"/>
             </div>
 
           <div class="input-box">
@@ -82,4 +88,8 @@ if(isset($_GET['edit_penjualan'])){
         })
     </script>
 </body>
+<script>
+const currentHref = window.location.href;
+
+</script>
 </html>

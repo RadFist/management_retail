@@ -107,14 +107,15 @@ function total_laba_kotor($connect){
 
 
 function getDataStockIn($connect){
-    $query = "SELECT  r.id_restok as id,
-    r.jumlah_restok AS jumlah,
-    r.tanggal AS tanggal,
-    p.nama_produk AS produk,
-    s.nama AS nama
-FROM tb_restok r
-JOIN tb_produk p ON r.id_produk = p.id_produk
-JOIN tb_supplier s ON r.id_supplier = s.id_supplier
+    $query = "SELECT r.id_restok AS id, 
+    r.jumlah_restok AS jumlah, 
+    r.tanggal AS tanggal, 
+    p.nama_produk AS produk, 
+    s.nama AS nama, 
+    s.id_supplier AS id_supplier 
+FROM tb_restok r 
+JOIN tb_produk p ON r.id_produk = p.id_produk 
+LEFT JOIN tb_supplier s ON r.id_supplier = s.id_supplier 
     ";
     $sql = mysqli_query($connect,$query);
     $result = array();
