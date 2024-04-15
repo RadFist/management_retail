@@ -13,16 +13,16 @@ WHERE tanggal >= DATE_SUB(NOW(), INTERVAL 1 YEAR)
 GROUP BY bulan
 ORDER BY bulan ASC";
 
-$query_bulan="SELECT DATE_FORMAT(tanggal, '%m-%d') AS bulan,
+$query_bulan="SELECT DATE_FORMAT(tanggal, '%d %M') AS bulan,
 SUM(terjual * harga) AS pendapatan
 FROM tb_rekap_penjualan
 WHERE MONTH(tanggal) = MONTH(NOW())
 GROUP BY bulan;";
 
-$query_minggu="SELECT DATE_FORMAT(tanggal, '%d') AS bulan,
+$query_minggu="SELECT DATE_FORMAT(tanggal, '%d %M') AS bulan,
 SUM(terjual * harga) AS pendapatan
 FROM tb_rekap_penjualan
-WHERE DAY(tanggal) <= DAY(NOW()) 
+WHERE (DAY(tanggal) <= DAY(NOW()) AND DAY(tanggal) >= DAY(NOW())-7) AND (MONTH(tanggal)=MONTH(NOW()))
 GROUP BY bulan;";
 
 $sql_tahun = mysqli_query($connect,$query_tahun);
