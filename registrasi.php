@@ -49,6 +49,10 @@ if($pass==$confirm){
                     <form action="" method="POST" class="mb-2">
                             <h2 class="text-center mb-3">Register</h2>
                             <div class="form-grup">
+                                <label for="username">nama</label>
+                                <input type="text" name="username" id="username" class="form-control" required>
+                            </div>
+                            <div class="form-grup">
                                 <label for="username">username</label>
                                 <input type="text" name="username" id="username" class="form-control" required>
                             </div>
