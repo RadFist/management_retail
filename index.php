@@ -5,6 +5,10 @@ session_start();
 $total = total_laba_kotor($connect);
 $title = "Dashboard";
 
+if ($_SESSION['username']==""  && $_SESSION['pass'] ==""){
+    header("location:login.php");  
+} 
+
 //product total count database
 $produk_total = getTotalCount($connect, 'tb_produk', 'id_produk');
 //supplier total count database
