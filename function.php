@@ -104,13 +104,6 @@ function total_laba_kotor($connect){
     $result = mysqli_fetch_assoc($sql);
     return $result['total'];
 }
-function nama_login($connect,$id){
-    $query = "SELECT tb_login.id_login, tb_login.id_karyawan ,tb_karyawan.Nama as nama FROM `tb_login`
-    JOIN tb_karyawan on tb_login.id_karyawan = tb_karyawan.id_karyawan WHERE id_login = $id";
-    $sql = mysqli_query($connect, $query);
-    $result = mysqli_fetch_assoc($sql);
-    return $result['nama'];
-}
 
 
 function getDataStockIn($connect){

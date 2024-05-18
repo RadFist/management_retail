@@ -40,7 +40,9 @@ if (isset($_POST['login'])=='login'){
         header("location:index.php");
       }
       else{
-         echo "<script>alert('password/username salah');</script>";
+         $_SESSION['login_error'] = "Login Gagal! Username & Password salah.";
+         header("location:login.php");
+         exit();
       }
     
 
@@ -70,6 +72,14 @@ if (isset($_POST['login'])=='login'){
                   <label>Password</label>
                   <input name="password" id="password" type="password" required onchange="validateInput()">
                </div>
+               
+               <?php
+                   if (isset($_SESSION['login_error'])) {
+                  echo "<div class='error' style='color: red; margin-bottom: 2px'>{$_SESSION['login_error']}</div>";
+                  unset($_SESSION['login_error']);
+                }
+               ?>
+
                <div class="btn">
                   <div class="inner"></div>
                   <button type="submit" name="login" value="login">login</button>
