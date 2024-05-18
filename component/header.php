@@ -2,9 +2,10 @@
 if (empty( $_SESSION['username'])  AND empty($_SESSION['pass'] )){
     header("location:login.php");  
 } 
+
 ?>
 <div class="header--wrapper">
-    <h2>E E G.</h2>
+    <h2>R J J.</h2>
     <div class="header--title">
         <h2><?php echo"$title"; ?></h2>
     </div>
@@ -15,6 +16,8 @@ if (empty( $_SESSION['username'])  AND empty($_SESSION['pass'] )){
                 <span class="nav-logout">Logout</span>
             </a>
         </div>
-        <img src="" alt="">
+        <div class="header--name">
+            <p><?php echo $_SESSION['karyawan'] ?></p>
+        </div>
     </div>
 </div>

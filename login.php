@@ -40,8 +40,7 @@ if (isset($_POST['login'])=='login'){
         header("location:index.php");
       }
       else{
-        echo "<h1>Login Gagal! Username & Password salah.</h1>";
-        echo "<p><a href=\"index.php\">Ulangi Lagi</a></p>";  
+         echo "<script>alert('password/username salah');</script>";
       }
     
 
@@ -76,7 +75,7 @@ if (isset($_POST['login'])=='login'){
                   <button type="submit" name="login" value="login">login</button>
                </div>
                <div class="signup-link">
-                  belum punya akun? <a href="#">Daftar disini</a>
+                  belum punya akun? <a href="registrasi.php">Daftar disini</a>
                </div>
             </form>
          </div>

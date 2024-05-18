@@ -526,3 +526,16 @@ tbody tr td a {
     background-color:  rgba(113, 99, 186, 225);
     border-color:  rgba(113, 99, 186, 225);
 }
+
+.header--name{
+    color: rgba(113, 99, 186, 225);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header--name p{
+    font-weight: 700;
+    font-size: 17px;
+    margin: 0;
+}
