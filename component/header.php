@@ -5,7 +5,7 @@ if (empty( $_SESSION['username'])  AND empty($_SESSION['pass'] )){
 
 ?>
 <div class="header--wrapper">
-    <h2>R J J.</h2>
+    <h2>LEKUMU.</h2>
     <div class="header--title">
         <h2><?php echo"$title"; ?></h2>
     </div>

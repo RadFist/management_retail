@@ -44,12 +44,6 @@
                         <span>record</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-question-circle"></i>
-                        <span>Bantuan</span>
-                    </a>
-                </li>
             </ul>
     </div>
 </div>
